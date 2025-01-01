@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bakery Delight</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navToggle = document.querySelector('.nav-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div style="display: flex; justify-content: space-evenly;">
+                <button class="nav-toggle" aria-label="Toggle Navigation">☰</button>
+                <div class="logo">Bakery Delight</div>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Homepage -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Bakery Delight</h1>
+            <p>Freshly baked goods made with love every day!</p>
+            <a href="#menu" class="btn">Explore Our Menu</a>
+        </div>
+    </section>
+
+    <!-- About Us -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>At Bakery Delight, we craft artisan breads, pastries, and cakes using only the finest ingredients. Our mission is to bring joy to your taste buds with every bite.</p>
+        </div>
+    </section>
+
+    <!-- Menu -->
+    <section id="menu" class="menu">
+        <div class="container">
+            <h2>Our Menu</h2>
+            <div class="menu-items">
+                <div class="item">
+                    <img src="bread.jpg" alt="Bread">
+                    <h3>Artisan Bread</h3>
+                    <p>$5.00</p>
+                </div>
+                <div class="item">
+                    <img src="cake.jpg" alt="Cake">
+                    <h3>Custom Cakes</h3>
+                    <p>Starting at $20.00</p>
+                </div>
+                <div class="item">
+                    <img src="cookies.jpg" alt="Cookies">
+                    <h3>Chocolate Chip Cookies</h3>
+                    <p>$2.50</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2>Gallery</h2>
+            <div class="gallery-images">
+                <img src="gallery1.jpg" alt="Baked Goods">
+                <img src="gallery2.jpg" alt="Cake Display">
+                <img src="gallery3.jpg" alt="Bread Loaves">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p>Address: 123 Bakery Lane, Sweet City</p>
+            <p>Phone: (555) 123-4567</p>
+            <p>Email: info@bakerydelight.com</p>
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Bakery Delight. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
