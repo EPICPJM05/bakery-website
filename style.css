@@ -105,7 +105,9 @@ header {
     cursor: pointer;
     text-decoration: none;
 }
-
+.hero-content{
+    color:black;
+}
 /* Section Styling */
 section {
     padding: 4rem 0;
