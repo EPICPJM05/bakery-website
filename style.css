@@ -123,6 +123,37 @@ section h2 {
     text-align: center;
     color: #555;
 }
+.cakes-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.cake-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    width: 200px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+/*cake*/
+.cake-item img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.cake-item h3 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.cake-item p {
+    color: #555;
+    font-size: 16px;
+}
 
 .menu-items {
     display: grid;
