@@ -1,3 +1,4 @@
+/* General Styles */
 html {
     scroll-behavior: smooth;
 }
@@ -6,8 +7,10 @@ body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
+/* Header */
 header {
     background: #3a6bfe;
     color: white;
@@ -17,44 +20,48 @@ header {
     z-index: 1000;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     display: flex;
+    justify-content: center;
 }
+
 .container {
     width: 90%;
+    max-width: 1200px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
+/* Logo */
 .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-size: 1.5rem;
     font-weight: 600;
+    color: white;
 }
+
+.logo img {
+    width: 50px;
+    height: auto;
+}
+
 .nav-links {
     display: flex;
     list-style: none;
     gap: 1.5rem;
     transition: max-height 0.3s ease;
-    max-height: 0;
     overflow: hidden;
-    flex-direction: column;
-    scroll-behavior: smooth;
 }
-.nav-links li {
-    display: block;
-}
+
 .nav-links li a {
     color: white;
     text-decoration: none;
     font-weight: 400;
 }
-.order-now {
-    background: white;
-    color: #3a6bfe;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    font-weight: 600;
-}
 
+/* Responsive Navigation */
 .nav-toggle {
     display: none;
     font-size: 1.5rem;
@@ -70,7 +77,9 @@ header {
         text-align: center;
     }
     .nav-links {
+        flex-direction: column;
         max-height: 0;
+        overflow: hidden;
     }
     .nav-links.open {
         max-height: 300px;
@@ -85,16 +94,19 @@ header {
     background: url('hero-bg.jpg') no-repeat center center/cover;
     color: black;
     text-align: center;
-    padding: 5rem 0;
+    padding: 5rem 1rem;
 }
+
 .hero h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     margin-bottom: 1rem;
 }
+
 .hero p {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     margin-bottom: 2rem;
 }
+
 .hero .btn {
     background: #3a6bfe;
     color: white;
@@ -108,8 +120,9 @@ header {
 
 /* Section Styling */
 section {
-    padding: 4rem 0;
+    padding: 4rem 1rem;
 }
+
 section h2 {
     text-align: center;
     margin-bottom: 2rem;
@@ -117,88 +130,46 @@ section h2 {
     color: #333;
 }
 
+/* About Section */
 .about p {
-    width: 80%;
+    width: 100%;
+    max-width: 600px;
     margin: 0 auto;
     text-align: center;
     color: #555;
 }
-.cakes-gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+
+/* Gallery */
+.cakes-gallery, .menu-items, .gallery-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    width: 90%;
+    margin: 0 auto;
 }
 
-.cake-item {
+.cake-item, .menu-items .item {
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 10px;
     text-align: center;
-    width: 200px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: white;
 }
-/*cake*/
-.cake-item img {
+
+.cake-item img, .menu-items img, .gallery-images img {
     width: 100%;
     border-radius: 8px;
     margin-bottom: 10px;
 }
 
-.cake-item h3 {
-    font-size: 18px;
-    margin: 10px 0;
-}
-
-.cake-item p {
-    color: #555;
-    font-size: 16px;
-}
-
-.menu-items {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-    width: 90%;
-    margin: 0 auto;
-}
-.menu-items .item {
+/* Contact Section */
+.contact {
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
-    border-radius: 10px;
-    background: #fff;
-}
-.menu-items img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-}
-.menu-items h3 {
-    margin: 1rem 0 0.5rem;
-}
-.menu-items p {
-    color: #3a6bfe;
-    font-weight: 600;
-}
-
-/* Gallery */
-.gallery-images {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    width: 90%;
-    margin: 0 auto;
-}
-.gallery-images img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 2rem 1rem;
 }
 
 .contact p {
-    text-align: center;
     margin-bottom: 1rem;
     color: #555;
 }
@@ -207,16 +178,18 @@ section h2 {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    width: 90%;
+    width: 100%;
     max-width: 500px;
     margin: 0 auto;
 }
+
 .contact input, .contact textarea, .contact button {
     padding: 0.75rem;
     font-size: 1rem;
     border: 1px solid #ddd;
     border-radius: 5px;
 }
+
 .contact button {
     background: #3a6bfe;
     color: white;
@@ -229,22 +202,11 @@ footer {
     background: #333;
     color: white;
     text-align: center;
-    padding: 2rem 0;
+    padding: 2rem 1rem;
 }
+
 footer a {
     color: #3a6bfe;
     margin: 0 0.5rem;
     text-decoration: none;
-}
-
-@media (min-width: 769px) {
-.nav-links {
-display: flex;
-flex-direction: row;
-gap: 1.5rem;
-max-height: none;
-}
-.nav-toggle {
-display: none;
-}
 }
