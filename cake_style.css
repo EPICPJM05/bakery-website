@@ -110,6 +110,26 @@ footer .social-icons a {
 }
 
 /* Responsive Adjustments */
+@media (max-width: 1024px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .cakes-gallery {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjusted for medium screens */
+    }
+
+    .cake-item img {
+        height: 110px; /* Adjusted for medium screens */
+    }
+}
+
 @media (max-width: 768px) {
     header {
         flex-direction: column;
@@ -127,5 +147,35 @@ footer .social-icons a {
 
     .cake-item img {
         height: 100px; /* Further reduce height for smaller screens */
+    }
+
+    .custom-cakes h1 {
+        font-size: 1.8rem; /* Adjusted title font size for smaller screens */
+    }
+
+    footer {
+        padding: 1.5rem 0; /* Reduced padding for footer on smaller screens */
+    }
+
+    footer .social-icons a {
+        font-size: 1rem; /* Adjusted social icon size for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .cakes-gallery {
+        grid-template-columns: 1fr; /* One column for very small screens */
+    }
+
+    .cake-item img {
+        height: 90px; /* Even smaller images for very small screens */
+    }
+
+    .custom-cakes h1 {
+        font-size: 1.5rem; /* Smaller heading font size */
+    }
+
+    footer .social-icons a {
+        font-size: 0.9rem; /* Smaller social icon font size */
     }
 }
