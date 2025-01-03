@@ -61,7 +61,9 @@ header {
     text-decoration: none;
     font-weight: 400;
 }
-
+.menu-items > .item img{
+    object-fit: cover;
+}
 /* Responsive Navigation */
 .nav-toggle {
     display: none;
