@@ -72,6 +72,10 @@ header {
 .menu-items > .item img{
     object-fit: cover;
 }
+.menu-items > .item a{
+    text-decoration: none;
+    color: black;
+}
 /* Responsive Navigation */
 .nav-toggle {
     display: none;
@@ -81,6 +85,14 @@ header {
     color: white;
     cursor: pointer;
 }
+
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:10px;
+}
+
  #map {
             width: 90%;
             height: 400px;
@@ -93,6 +105,12 @@ header {
             #map {
                 height: 300px;
             }
+            .flex{
+                display: flex;
+                flex-direction: column;
+                padding: 0;
+            }
+
         }
 
 @media (max-width: 1024px) {
