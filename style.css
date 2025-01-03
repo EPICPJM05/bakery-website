@@ -60,6 +60,14 @@ header {
     color: white;
     text-decoration: none;
     font-weight: 400;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+
+.nav-links li a:hover {
+    color: #3a6bfe; /* Change text color */
+    background-color: white; /* Add a background color */
 }
 
 /* Responsive Navigation */
@@ -71,7 +79,6 @@ header {
     color: white;
     cursor: pointer;
 }
-
  #map {
             width: 90%;
             height: 400px;
