@@ -72,6 +72,20 @@ header {
     cursor: pointer;
 }
 
+ #map {
+            width: 90%;
+            height: 400px;
+            margin: 20px auto;
+            border: 2px solid #6200ea;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 768px) {
+            #map {
+                height: 300px;
+            }
+        }
+
 @media (max-width: 1024px) {
     .container {
         flex-direction: column;
