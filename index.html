@@ -26,7 +26,7 @@
             <div style="display: flex; justify-content: space-evenly;">
                 <button class="nav-toggle" aria-label="Toggle Navigation">☰</button>
                 <div class="logo">
-                    <img src="Assets/Logo.jpg" alt="Logo" width="150">
+                    <img src="Assets/Logo.jpg" alt="Logo">
                     <span>Trupti Bakery</span>
                 </div>
                 
@@ -116,7 +116,7 @@
         // Add OpenStreetMap tiles
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
-            attribution: '© OpenStreetMap contributors'
+            attribution: ''
         }).addTo(map);
         marker.bindPopup('<b>Our Shop</b><br>We are here!').openPopup();
     </script>
