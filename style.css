@@ -299,6 +299,12 @@ footer a {
     padding: 10px;
 }
 
+.social-icons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .instagram-link {
     display: flex;
     align-items: center;
