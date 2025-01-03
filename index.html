@@ -20,110 +20,15 @@
 </head>
 <body>
     <!-- Header -->
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        header {
-            background-color: #fff;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-toggle {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-            background: none;
-            border: none;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo img {
-            margin-right: 10px;
-            border-radius: 50%;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 20px;
-        }
-
-        .nav-links li a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        .nav-links li a:hover {
-            color: #ff6347;
-        }
-
-        @media (max-width: 768px) {
-            .nav-toggle {
-                display: block;
-            }
-
-            nav {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: #fff;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                transform: translateY(-100%);
-                transition: transform 0.3s ease-in-out;
-                z-index: 100;
-            }
-
-            nav.open {
-                transform: translateY(0);
-            }
-
-            .nav-links {
-                flex-direction: column;
-                align-items: center;
-                padding: 20px 0;
-            }
-
-            .nav-links li {
-                margin: 10px 0;
-            }
-        }
-    </style>
-</head>
-<body>
     <header>
         <div class="container">
-            <button class="nav-toggle" aria-label="Toggle Navigation">☰</button>
-            <div class="logo">
-                <img src="Assets/Logo.jpg" alt="Logo" width="50">
-                <span>Trupti Bakery</span>
+            <div style="display: flex; justify-content: space-evenly;">
+                <button class="nav-toggle" aria-label="Toggle Navigation">☰</button>
+                <div class="logo">
+                    <img src="Assets/Logo.jpg" alt="Logo" width="150">
+                    <span>Trupti Bakery</span>
+                </div>
+                
             </div>
             <nav>
                 <ul class="nav-links">
@@ -136,14 +41,7 @@
             </nav>
         </div>
     </header>
-    <script>
-        const navToggle = document.querySelector('.nav-toggle');
-        const nav = document.querySelector('nav');
 
-        navToggle.addEventListener('click', () => {
-            nav.classList.toggle('open');
-        });
-    </script>
     <!-- Homepage -->
     <section id="home" class="hero">
         <div class="hero-content">
@@ -205,6 +103,24 @@
 </section>
 
 
+    <!-- Gallery -->
+    <section id="gallery" class="gallery">
+        <div class="container2">
+            <h2>Gallery</h2>
+            <div class="photos">
+                <div  class="card"><img src="Assets/image1.jpg" alt="Image 1" width="200px"><div class="desc">Cake Rs.500</div></div>  
+                <div  class="card"><img src="Assets/image1.jpg" alt="Image 2" width="200px"><div class="desc">Cake Rs.500</div></div>
+                <div  class="card"><img src="Assets/image1.jpg" alt="Image 3" width="200px"><div class="desc">Cake Rs.500</div></div>
+                <div  class="card"><img src="Assets/image1.jpg" alt="Image 4" width="200px"><div class="desc">Cake Rs.500</div></div>
+                <div  class="card"><img src="Assets/image1.jpg" alt="Image 5" width="200px"><div class="desc">Cake Rs.500</div></div>
+                <div  class="card"><img src="Assets/image1.jpg" alt="Image 6" width="200px"><div class="desc">Cake Rs.500</div></div>
+                <div  class="card"><img src="Assets/image1.jpg" alt="Image 7" width="200px"><div class="desc">Cake Rs.500</div></div>
+                <div  class="card"><img src="Assets/image1.jpg" alt="Image 8" width="200px"><div class="desc">Cake Rs.500</div></div>
+                <div  class="card"><img src="Assets/image1.jpg" alt="Image 9" width="200px"><div class="desc">Cake Rs.500</div></div>
+                <div  class="card"><img src="Assets/image1.jpg" alt="Image 10" width="200px"><div class="desc">Cake Rs.500</div></div>
+            </div>
+        </div>
+    </section>
 
     <!-- Contact -->
     <section id="contact" class="contact">
