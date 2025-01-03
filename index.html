@@ -70,18 +70,18 @@
                     <img src="Assets/cake.jpg" alt="Cake" width="300px" height="300px">
                     <h3>Custom Cakes</h3>
                 </a>
-                    <p>Starting at $20.00</p>
+                    <p>Starting at ₹400</p>
                 
             </div>
             <div class="item">
                 <img src="Assets/pastry.jpg" alt="Pastry" width="300px" height="300px">
                 <h3>Pastry</h3>
-                <p>Starting at $2.50</p>
+                <p>Starting at ₹85</p>
             </div>
             <div class="item">
                 <img src="Assets/bread.jpg" alt="Bread" width="300px" height="300px">
                 <h3>Artisan Bread</h3>
-                <p>$5.00</p>
+                <p>₹35</p>
             </div>
             <!-- New Item: Puff -->
             <div class="item">
@@ -90,37 +90,38 @@
             
                 <h3>Puff</h3>
             </a>
-                <p>$1.50</p>
+                <p>₹30</p>
                 
             </div>
             <div class="item">
                 <img src="Assets/soft-drinks.jpg" alt="Cold_Drinks" width="300px" height="300px">
                 <h3>Cold Drinks</h3>
-                <p>$5.00</p>
+                <p>Starting at ₹20</p>
             </div>
         </div>
     </div>
 </section>
 
 
-<h2>Our Shop Location</h2>
-    <div id="map"></div>
+    <!-- Gallery -->
+    <section id="gallery" class="gallery">
+        <div class="container2">
+            <h2>Gallery</h2>
+            <div class="photos">
+                <div  class="card"><img src="Assets/image1.jpg" alt="Image 1" width="200px"><div class="desc">Cake Rs.500</div></div>  
+                <div  class="card"><img src="Assets/image1.jpg" alt="Image 2" width="200px"><div class="desc">Cake Rs.500</div></div>
+                <div  class="card"><img src="Assets/image1.jpg" alt="Image 3" width="200px"><div class="desc">Cake Rs.500</div></div>
+                <div  class="card"><img src="Assets/image1.jpg" alt="Image 4" width="200px"><div class="desc">Cake Rs.500</div></div>
+                <div  class="card"><img src="Assets/image1.jpg" alt="Image 5" width="200px"><div class="desc">Cake Rs.500</div></div>
+                <div  class="card"><img src="Assets/image1.jpg" alt="Image 6" width="200px"><div class="desc">Cake Rs.500</div></div>
+                <div  class="card"><img src="Assets/image1.jpg" alt="Image 7" width="200px"><div class="desc">Cake Rs.500</div></div>
+                <div  class="card"><img src="Assets/image1.jpg" alt="Image 8" width="200px"><div class="desc">Cake Rs.500</div></div>
+                <div  class="card"><img src="Assets/image1.jpg" alt="Image 9" width="200px"><div class="desc">Cake Rs.500</div></div>
+                <div  class="card"><img src="Assets/image1.jpg" alt="Image 10" width="200px"><div class="desc">Cake Rs.500</div></div>
+            </div>
+        </div>
+    </section>
 
-    <script>
-        function initMap() {
-            const shopLocation = { lat:23.021534, lng:72.525532 };
-            const map = new google.maps.Map(document.getElementById('map'), {
-                center: shopLocation,
-                zoom: 14,
-            });
-            const marker = new google.maps.Marker({
-                position: shopLocation,
-                map: map,
-                title: 'Our Shop',
-            });
-        }
-    </script>
-    
     <!-- Contact -->
     <section id="contact" class="contact">
         <div class="container">
@@ -154,7 +155,5 @@
             </div>
         </div>
     </footer>
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
-
 </body>
 </html>
