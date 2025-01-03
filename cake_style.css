@@ -147,7 +147,7 @@ footer .social-icons a {
     }
 
     .cake-item img {
-        height: 150px; /* Further reduce height on small screens */
+        height: 170px; /* Further reduce height on small screens */
         width: 90%; /* Further reduce width */
     }
 }
