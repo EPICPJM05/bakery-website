@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const navToggle = document.querySelector('.nav-toggle');
@@ -105,19 +106,17 @@
 <h2>Our Shop Location</h2>
     <div id="map"></div>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha384-nrC4xRCb4xQ4lVElKfw3WkgOCL3LjRR4PaIlQHDnYkYLua2p2oDj+Qm90XfU2R0x" crossorigin="anonymous"></script>
+
     <script>
         // Initialize the map
-        const map = L.map('map').setView([23.022185, 72.525732],13);
+        const map = L.map('map').setView([23.022185, 72.525732], 13);
+        const marker = L.marker([23.022185, 72.525732]).addTo(map);
 
         // Add OpenStreetMap tiles
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '© OpenStreetMap contributors'
         }).addTo(map);
-
-        // Add a marker for the shop
-        const marker = L.marker([23.022185, 72.525732]).addTo(map); // Replace with your latitude and longitude
         marker.bindPopup('<b>Our Shop</b><br>We are here!').openPopup();
     </script>
 
@@ -156,5 +155,6 @@
             </div>
         </div>
     </footer>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </body>
 </html>
