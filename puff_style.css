@@ -111,6 +111,52 @@ footer .social-icons a {
     font-weight: 500;
 }
 
+.social-icons a{
+    padding: 10px;
+}
+
+.instagram-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #ffffff;
+    font-family:cursive;
+    font-size: 16px;
+}
+.instagram-link i {
+    font-size: 24px;
+    color: #E1306C;
+    margin-right: 8px;
+}
+
+.facebook-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #ffffff;
+    font-family: cursive;
+    font-size: 16px;
+}
+.facebook-link i {
+    font-size: 24px;
+    color: #1877F2;
+    margin-right: 8px;
+}
+
+.call-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #ffffff;
+    font-family: cursive;
+    font-size: 16px;
+}
+.call-link i {
+    font-size: 24px;
+    color: #28A745;
+    margin-right: 8px;
+}
+
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     header {
