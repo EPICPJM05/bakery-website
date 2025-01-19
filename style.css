@@ -1,14 +1,88 @@
 /* Custom Styles */
 body {
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth; /* Smooth scrolling */
 }
 
 .hero {
     background: linear-gradient(135deg, #ff7e5f, #feb47b);
     height: 100vh;
     color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    animation: fadeIn 2s ease-in-out; /* Fade-in animation */
 }
 
+.hero h1 {
+    font-size: 4rem;
+    font-weight: bold;
+    animation: fadeInDown 1.5s ease-out;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    animation: fadeInUp 1.5s ease-out;
+}
+
+.hero .btn {
+    font-size: 1.2rem;
+    padding: 10px 30px;
+    border-radius: 30px;
+    border: 2px solid #fff;
+    animation: zoomIn 1s ease-out;
+}
+
+.hero .btn:hover {
+    background-color: #ff7e5f;
+    border-color: #ff7e5f;
+}
+
+/* Keyframe animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+/* Carousel Images */
 #menu .carousel-item {
     text-align: center;
 }
@@ -16,19 +90,33 @@ body {
 #menu .carousel-item img {
     width: 100%;
     height: auto;
-    max-width: 300px; /* Adjust this value to control the max size */
+    max-width: 300px;
     margin: 0 auto;
     display: block;
+    transition: transform 0.3s ease, filter 0.3s ease; /* Smooth transition */
 }
 
+#menu .carousel-item img:hover {
+    transform: scale(1.1); /* Slight zoom effect */
+    filter: brightness(1.2); /* Increase brightness on hover */
+}
+
+/* Offers Cards */
 #offers .card img {
     width: 100%;
     height: auto;
-    max-width: 200px; /* Adjust this value for offer images */
+    max-width: 200px;
     margin: 0 auto;
     display: block;
+    transition: transform 0.3s ease, filter 0.3s ease;
 }
 
+#offers .card img:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+/* Scroll-to-top Button */
 #scrollToTopBtn {
     position: fixed;
     bottom: 20px;
@@ -41,28 +129,211 @@ body {
     padding: 10px;
     cursor: pointer;
     border-radius: 50%;
+    transition: background-color 0.3s ease;
 }
 
 #scrollToTopBtn:hover {
-    background-color: red;
+    background-color: #d43f00; /* Darker red on hover */
 }
 
-/* Card Hover Effects */
+/* Cards */
 .card {
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
     transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+}
+
+.card-body {
+    transition: background-color 0.3s ease;
+}
+
+.card-body:hover {
+    background-color: #f8f9fa;
 }
 
 /* Navbar */
 .navbar {
+    background-color: #0056b3; /* Darker blue */
     z-index: 9999;
+    transition: background-color 0.3s ease;
+}
+
+.navbar .navbar-brand {
+    color: #fff !important; /* Ensure brand logo text is visible */
+}
+
+.navbar .navbar-nav .nav-link {
+    color: #fff !important; /* Make sure links are white */
+    font-weight: bold; /* Add boldness to text */
+}
+
+.navbar .navbar-nav .nav-link:hover {
+    color: #ff7e5f !important; /* Add a pop of color on hover */
+    background-color: rgba(255, 99, 71, 0.2); /* Light background on hover */
+}
+
+.navbar-toggler-icon {
+    background-color: #fff; /* Make hamburger menu icon white */
+}
+
+.navbar:hover {
+    background-color: #004085; /* Darker blue when hovering over navbar */
+}
+
+.navbar .navbar-nav .nav-link.active {
+    color: #ff7e5f !important; /* Highlight active link with the same color as hover */
+    background-color: rgba(255, 99, 71, 0.2); /* Light background for active link */
+}
+
+/* Adjust the brand image for better alignment */
+.navbar-brand img {
+    border-radius: 50%;
+    margin-right: 10px;
 }
 
 /* Footer */
 footer {
     background-color: #343a40;
     color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+footer:hover {
+    background-color: #222; /* Darker footer on hover */
+}
+
+/* Menu Section Image Styling */
+.card-img-top {
+    width: 100%;
+    height: 200px; /* Adjust this value to set the height you prefer */
+    object-fit: cover;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.card-img-top:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2); /* Add a hover effect to brighten and zoom */
+}
+
+/* Ensure the cards have consistent height */
+.card {
+    height: 100%;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Scroll Animation for Elements */
+[data-aos] {
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+
+[data-aos].aos-animate {
+    opacity: 1;
+}
+
+/* Responsive Design */
+
+/* Small devices (phones, 600px and below) */
+@media only screen and (max-width: 600px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .hero .btn {
+        font-size: 1rem;
+        padding: 8px 20px;
+    }
+
+    .navbar .navbar-nav .nav-link {
+        font-size: 1rem;
+    }
+
+    #menu .carousel-item img {
+        max-width: 100%;
+    }
+
+    .card-img-top {
+        height: 150px;
+    }
+
+    footer {
+        text-align: center;
+    }
+
+    #scrollToTopBtn {
+        right: 15px;
+        bottom: 15px;
+    }
+}
+
+/* Medium devices (tablets, 768px and below) */
+@media only screen and (max-width: 768px) {
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+
+    .hero .btn {
+        font-size: 1.1rem;
+        padding: 10px 25px;
+    }
+
+    .navbar .navbar-nav .nav-link {
+        font-size: 1.1rem;
+    }
+
+    #menu .carousel-item img {
+        max-width: 100%;
+    }
+
+    .card-img-top {
+        height: 180px;
+    }
+
+    footer {
+        text-align: center;
+    }
+
+    #scrollToTopBtn {
+        right: 20px;
+        bottom: 20px;
+    }
+}
+
+/* Large devices (laptops, 1024px and below) */
+@media only screen and (max-width: 1024px) {
+    .hero h1 {
+        font-size: 3.5rem;
+    }
+
+    .hero p {
+        font-size: 1.3rem;
+    }
+
+    .hero .btn {
+        font-size: 1.2rem;
+        padding: 12px 35px;
+    }
+
+    .navbar .navbar-nav .nav-link {
+        font-size: 1.2rem;
+    }
+
+    .card-img-top {
+        height: 200px;
+    }
+
+    #menu .carousel-item img {
+        max-width: 90%;
+    }
 }
