@@ -17,7 +17,7 @@
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-danger shadow">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #add8e6;"> <!-- Very light blue color -->
         <div class="container">
             <a class="navbar-brand" href="#">
                 <img src="Assets/Logo.jpg" alt="Logo" class="rounded-circle" width="50">
@@ -41,9 +41,9 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero text-center text-light d-flex align-items-center justify-content-center" style="position: relative; background: url('https://www.publicdomainpictures.net/pictures/30000/velka/cake-1571354445Vzt.jpg') no-repeat center center; background-size: cover;">
-        <!-- Blue Overlay -->
-        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 255, 0.5);"></div>
-        
+        <!-- Light Red Overlay -->
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 99, 71, 0.6);"></div> <!-- Light Red Color (Tomato) -->
+    
         <div class="container position-relative">
             <h1 class="display-4 fw-bold" data-aos="fade-down">Welcome to Trupti Bakery</h1>
             <p class="lead" data-aos="fade-up">Freshly baked goods made with love every day!</p>
@@ -63,35 +63,71 @@
     <section id="menu" class="py-5">
         <div class="container">
             <h2 class="text-center fw-bold mb-5" data-aos="fade-up">Our Menu</h2>
-            <div id="menuCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div id="menuCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
                 <div class="carousel-inner">
                     <!-- Cake -->
                     <div class="carousel-item active" data-aos="flip-left">
-                        <div class="card shadow border-0">
-                            <img src="Assets/cake.jpg" class="card-img-top" alt="Cake">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">Custom Cakes</h5>
-                                <p class="card-text">Starting at ₹400</p>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card shadow border-0">
+                                    <img src="Assets/cake.jpg" class="card-img-top" alt="Cake">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Custom Cakes</h5>
+                                        <p class="card-text">Starting at ₹400</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Pastry -->
+                            <div class="col-md-4">
+                                <div class="card shadow border-0">
+                                    <img src="Assets/pastry.jpg" class="card-img-top" alt="Pastry">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Pastry</h5>
+                                        <p class="card-text">Starting at ₹85</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Bread -->
+                            <div class="col-md-4">
+                                <div class="card shadow border-0">
+                                    <img src="Assets/bread.jpg" class="card-img-top" alt="Bread">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Artisan Bread</h5>
+                                        <p class="card-text">₹35</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Pastry -->
+                    <!-- Add More Items Below -->
                     <div class="carousel-item" data-aos="flip-left">
-                        <div class="card shadow border-0">
-                            <img src="Assets/pastry.jpg" class="card-img-top" alt="Pastry">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">Pastry</h5>
-                                <p class="card-text">Starting at ₹85</p>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card shadow border-0">
+                                    <img src="Assets/cake2.jpg" class="card-img-top" alt="Cake">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Chocolate Cake</h5>
+                                        <p class="card-text">₹500</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <!-- Bread -->
-                    <div class="carousel-item" data-aos="flip-left">
-                        <div class="card shadow border-0">
-                            <img src="Assets/bread.jpg" class="card-img-top" alt="Bread">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">Artisan Bread</h5>
-                                <p class="card-text">₹35</p>
+                            <div class="col-md-4">
+                                <div class="card shadow border-0">
+                                    <img src="Assets/pastry2.jpg" class="card-img-top" alt="Pastry">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Fruit Pastry</h5>
+                                        <p class="card-text">₹100</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card shadow border-0">
+                                    <img src="Assets/bread2.jpg" class="card-img-top" alt="Bread">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Whole Wheat Bread</h5>
+                                        <p class="card-text">₹40</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
