@@ -12,12 +12,87 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- Leaflet Map CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Navbar Styling */
+        .navbar {
+            background-color: #1A1A40; /* Deep Navy Blue */
+        }
+
+        .navbar .nav-link {
+            color: #FFFFFF; /* White */
+            transition: color 0.3s ease;
+        }
+
+        .navbar .nav-link:hover {
+            color: #FFD700; /* Gold */
+        }
+
+        /* Hero Section Styling */
+        .hero {
+            position: relative;
+            background: linear-gradient(135deg, #FF7F50, #FFDAB9), url('https://www.publicdomainpictures.net/pictures/30000/velka/cake-1571354445Vzt.jpg') no-repeat center center;
+            background-size: cover;
+            color: #FFFFFF; /* White Text */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            min-height: 100vh;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .hero .btn {
+            background-color: #FFD700; /* Gold */
+            color: #1A1A40; /* Deep Navy Blue */
+            border: none;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+        }
+
+        .hero .btn:hover {
+            background-color: #1A1A40; /* Deep Navy Blue */
+            color: #FFFFFF; /* White */
+            transform: scale(1.1);
+        }
+
+        /* Cards Hover Effect */
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Scroll to Top Button */
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+
+        #scrollToTopBtn:hover {
+            transform: scale(1.2);
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #add8e6;"> <!-- Very light blue color -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand" href="#">
                 <img src="Assets/Logo.jpg" alt="Logo" class="rounded-circle" width="50">
@@ -40,14 +115,12 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero text-center text-light d-flex align-items-center justify-content-center" style="position: relative; background: url('https://www.publicdomainpictures.net/pictures/30000/velka/cake-1571354445Vzt.jpg') no-repeat center center; background-size: cover;">
-        <!-- Light Red Overlay -->
-        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 99, 71, 0.6);"></div> <!-- Light Red Color (Tomato) -->
-    
-        <div class="container position-relative">
+    <section id="home" class="hero d-flex align-items-center justify-content-center">
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 99, 71, 0.6);"></div>
+        <div class="container text-center position-relative">
             <h1 class="display-4 fw-bold" data-aos="fade-down">Welcome to Trupti Bakery</h1>
             <p class="lead" data-aos="fade-up">Freshly baked goods made with love every day!</p>
-            <a href="#menu" class="btn btn-light btn-lg mt-4" data-aos="zoom-in">Explore Our Menu</a>
+            <a href="#menu" class="btn btn-lg mt-4" data-aos="zoom-in">Explore Our Menu</a>
         </div>
     </section>
 
@@ -104,7 +177,7 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="card shadow border-0">
-                                    <img src="Assets/cake2.jpg" class="card-img-top" alt="Cake">
+                                    <img src="Assets/soft-drinks.jpg" class="card-img-top" alt="Cake">
                                     <div class="card-body text-center">
                                         <h5 class="card-title">Chocolate Cake</h5>
                                         <p class="card-text">₹500</p>
@@ -113,7 +186,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="card shadow border-0">
-                                    <img src="Assets/pastry2.jpg" class="card-img-top" alt="Pastry">
+                                    <img src="Assets/vanilla-cupcake.jpg" class="card-img-top" alt="Pastry">
                                     <div class="card-body text-center">
                                         <h5 class="card-title">Fruit Pastry</h5>
                                         <p class="card-text">₹100</p>
@@ -122,7 +195,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="card shadow border-0">
-                                    <img src="Assets/bread2.jpg" class="card-img-top" alt="Bread">
+                                    <img src="Assets/white-buns.jpg" class="card-img-top" alt="Bread">
                                     <div class="card-body text-center">
                                         <h5 class="card-title">Whole Wheat Bread</h5>
                                         <p class="card-text">₹40</p>
