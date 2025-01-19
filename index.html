@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trupti Bakery</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Animate on Scroll (AOS) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Leaflet Map CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger shadow">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="Assets/Logo.jpg" alt="Logo" class="rounded-circle" width="50">
+                Trupti Bakery
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#offers">Special Offers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero text-center text-light d-flex align-items-center justify-content-center" style="position: relative; background: url('https://www.publicdomainpictures.net/pictures/30000/velka/cake-1571354445Vzt.jpg') no-repeat center center; background-size: cover;">
+        <!-- Blue Overlay -->
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 255, 0.5);"></div>
+        
+        <div class="container position-relative">
+            <h1 class="display-4 fw-bold" data-aos="fade-down">Welcome to Trupti Bakery</h1>
+            <p class="lead" data-aos="fade-up">Freshly baked goods made with love every day!</p>
+            <a href="#menu" class="btn btn-light btn-lg mt-4" data-aos="zoom-in">Explore Our Menu</a>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-5 bg-light">
+        <div class="container text-center" data-aos="fade-up">
+            <h2 class="fw-bold">About Us</h2>
+            <p class="mt-3">At Trupti Bakery, we craft artisan breads, pastries, and cakes using the finest ingredients. Our mission is to bring joy to your taste buds with every bite.</p>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-5">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-5" data-aos="fade-up">Our Menu</h2>
+            <div id="menuCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <!-- Cake -->
+                    <div class="carousel-item active" data-aos="flip-left">
+                        <div class="card shadow border-0">
+                            <img src="Assets/cake.jpg" class="card-img-top" alt="Cake">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Custom Cakes</h5>
+                                <p class="card-text">Starting at ₹400</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Pastry -->
+                    <div class="carousel-item" data-aos="flip-left">
+                        <div class="card shadow border-0">
+                            <img src="Assets/pastry.jpg" class="card-img-top" alt="Pastry">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Pastry</h5>
+                                <p class="card-text">Starting at ₹85</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Bread -->
+                    <div class="carousel-item" data-aos="flip-left">
+                        <div class="card shadow border-0">
+                            <img src="Assets/bread.jpg" class="card-img-top" alt="Bread">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Artisan Bread</h5>
+                                <p class="card-text">₹35</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#menuCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#menuCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Offers Section -->
+    <section id="offers" class="py-5 bg-light">
+        <div class="container text-center" data-aos="fade-up">
+            <h2 class="fw-bold mb-4">Special Offers</h2>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="zoom-in">
+                    <div class="card shadow border-0">
+                        <img src="Assets/offer1.jpg" class="card-img-top" alt="Offer 1">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Buy One Get One Free!</h5>
+                            <p class="card-text">On selected pastries. Limited Time Offer.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="zoom-in">
+                    <div class="card shadow border-0">
+                        <img src="Assets/offer2.jpg" class="card-img-top" alt="Offer 2">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Discount on Cakes</h5>
+                            <p class="card-text">10% off on custom cakes.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="zoom-in">
+                    <div class="card shadow border-0">
+                        <img src="Assets/offer3.jpg" class="card-img-top" alt="Offer 3">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Free Delivery</h5>
+                            <p class="card-text">On orders above ₹1000</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="py-5">
+        <div class="container text-center" data-aos="fade-up">
+            <h2 class="fw-bold mb-4">Our Shop Location</h2>
+            <div id="map" style="height: 400px;"></div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 bg-light">
+        <div class="container text-center" data-aos="fade-up">
+            <h2 class="fw-bold">Contact Us</h2>
+            <p class="mt-3">123 Bakery Line, Satellite, Ahmedabad</p>
+            <p>Phone: +91 999-999-9999</p>
+            <p>Email: info@truptibakery.com</p>
+        </div>
+    </section>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" class="btn btn-primary rounded-circle">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-3">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2025 Trupti Bakery. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Leaflet Map JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init(); // Initialize AOS animations
+
+        // Initialize Leaflet Map
+        const map = L.map('map').setView([23.022185, 72.525732], 15);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+        L.marker([23.022185, 72.525732]).addTo(map)
+            .bindPopup('<b>Our Shop</b><br>We are here!')
+            .openPopup();
+
+        // Scroll to Top Button
+        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+        window.onscroll = function () {
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                scrollToTopBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        };
+        scrollToTopBtn.onclick = function () {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+    </script>
+</body>
+</html>
