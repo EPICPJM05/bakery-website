@@ -1,160 +1,1247 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trupti Bakery</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const navToggle = document.querySelector('.nav-toggle');
-            const navLinks = document.querySelector('.nav-links');
-
-            navToggle.addEventListener('click', () => {
-                navLinks.classList.toggle('open');
-            });
-        });
-    </script>
-</head>
-<body>
-    <!-- Header -->
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    />
+    <meta name="theme-color" content="#000" />
+    <meta name="msapplication-navbutton-color" content="#000" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#000" />
+    <meta
+      name="description"
+      content="Discover fresh, handcrafted breads at TruptiBakery. Enjoy a variety of delicious options baked daily."
+    />
+    <meta
+      name="keywords"
+      content="bakery, fresh bread, pastries, croissants, sweet bread"
+    />
+    <meta name="author" content="TruptiBakery" />
+    <link
+      rel="shortcut icon"
+      href="assets/images/logo/logo.svg"
+      type="image/x-icon"
+    />
+    <title>
+      TruptiBakery - Discover fresh, handcrafted breads at TruptiBakery. Enjoy a
+      variety of delicious options baked daily.
+    </title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+  <body>
     <header>
-        <div class="container">
-            <div style="display: flex; justify-content: space-evenly;">
-                <button class="nav-toggle" aria-label="Toggle Navigation">☰</button>
-                <div class="logo">
-                    <img src="Assets/Logo.jpg" alt="Logo">
-                    <span>Trupti Bakery</span>
-                </div>
-                
-            </div>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#menu">Menu</a></li>
-                    <li><a href="#gallery">Gallery</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
+      <div class="header-content">
+        <div class="logo">
+          <h3 onclick="window.location.href=''">
+            <i class="fa-solid fa-burger fa-bounce" style="color: #c7a17a"></i
+            >&nbsp;Trupti's Bakery
+          </h3>
         </div>
+        <nav class="navigation">
+          <h3 class="pb-2 brand d-none" onclick="window.location.href=''">
+            <i class="fa-solid fa-burger fa-bounce" style="color: #c7a17a"></i
+            >&nbsp;Trupti Bakery
+          </h3>
+          <li>
+            <a
+              class="active"
+              href="#"
+              id="home-nav"
+              onclick="scrollToSection(event, 'home', 'home-nav')"
+              ><i class="fa-solid fa-house"></i>&ensp;Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              id="product-nav"
+              onclick="scrollToSection(event, 'products', 'product-nav')"
+              ><i class="fa-solid fa-bread-slice"></i>&ensp;Product List</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              id="service-nav"
+              onclick="scrollToSection(event, 'faq', 'service-nav')"
+              ><i class="fa-solid fa-user-gear"></i>&ensp;Service</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              id="order-nav"
+              onclick="scrollToSection(event, 'services', 'order-nav')"
+              ><i class="fa-solid fa-cart-shopping"></i>&ensp;Most Recent Booking</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              id="about-us"
+              onclick="scrollToSection(event, 'about', 'about-us')"
+              ><i class="fa-solid fa-users"></i>&ensp;About Us</a
+            >
+          </li>
+        </nav>
+        <div class="bars">
+          <img
+            src="assets/images/others/menu.png"
+            alt="hamburger-menu"
+            class="bar"
+          />
+        </div>
+      </div>
     </header>
-
-    <!-- Homepage -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Welcome to Trupti Bakery</h1>
-            <p>Freshly baked goods made with love every day!</p>
-            <a href="#menu" class="btn">Explore Our Menu</a>
+    <div class="home-section" id="home">
+      <div class="home-content">
+        <h1 style="color: #edf2f7">
+          Made with Love,<br />
+          Enjoyed with <br />Taste
+        </h1>
+        <p>Made from Natural & Premium Ingredients, for Authentic Taste</p>
+        <div class="home-links">
+          <div class="first">
+            <a
+              href="#"
+              onclick="scrollToSection(event, 'products', 'product-nav')"
+              >Buy Now</a
+            >
+          </div>
         </div>
-    </section>
-
-    <!-- About Us -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2>About Us</h2>
-            <p>At Bakery Delight, we craft artisan breads, pastries, and cakes using only the finest ingredients. Our mission is to bring joy to your taste buds with every bite.</p>
-        </div>
-    </section>
-
-    <!-- Menu -->
-    <!-- Menu -->
-<section id="menu" class="menu">
-    <div class="container">
-        <h2>Our Menu</h2>
-        <div class="menu-items">
-            <div class="item">
-                <a href="cake.html">
-                    <img src="Assets/cake.jpg" alt="Cake" width="300px" height="300px">
-                    <h3>Custom Cakes</h3>
-                </a>
-                    <p>Starting at ₹400</p>
-                
-            </div>
-            <div class="item">
-                <img src="Assets/pastry.jpg" alt="Pastry" width="300px" height="300px">
-                <h3>Pastry</h3>
-                <p>Starting at ₹85</p>
-            </div>
-            <div class="item">
-                <img src="Assets/bread.jpg" alt="Bread" width="300px" height="300px">
-                <h3>Artisan Bread</h3>
-                <p>₹35</p>
-            </div>
-            <!-- New Item: Puff -->
-            <div class="item">
-                <a href="puff.html">
-                <img src="Assets/Puff.jpg" alt="Puff" width="300px" height="300px">
-            
-                <h3>Puff</h3>
-            </a>
-                <p>₹30</p>
-                
-            </div>
-            <div class="item">
-                <img src="Assets/soft-drinks.jpg" alt="Cold_Drinks" width="300px" height="300px">
-                <h3>Cold Drinks</h3>
-                <p>Starting at ₹20</p>
-            </div>
-        </div>
+      </div>
     </div>
-</section>
-
-<section class="flex">
-<h2>Our Shop Location</h2>
-    <div id="map"></div>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-    <script>
-        // Initialize the map
-        const map = L.map('map').setView([23.022185, 72.525732], 13);
-        const marker = L.marker([23.022185, 72.525732]).addTo(map);
-
-        // Add OpenStreetMap tiles
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: ''
-        }).addTo(map);
-        marker.bindPopup('<b>Our Shop</b><br>We are here!').openPopup();
-    </script>
-</section>
-
-
-    <!-- Contact -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2>Contact Us</h2>
-            <p>Address: 123 Bakery Line, Satellite, Ahmedabad</p>
-            <p>Phone: +91 999-999-9999</p>
-            <p>Email: info@truptibakery.com</p>
-            <form>
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea placeholder="Your Message" required></textarea>
-                <button type="submit">Send</button>
-            </form>
+    <div class="bg-shop" id="products">
+      <div class="shop-links">
+        <div><h2>Product List</h2></div>
+        <div class="links">
+          <li
+            class="active link-menu"
+            onclick="setActive(this)"
+            data-filter="all"
+          >
+            All
+          </li>
+          <li
+            class="link-menu"
+            data-filter=".roti-Donut"
+            onclick="setActive(this)"
+          >
+            Chocolates
+          </li>
+          <li
+            class="link-menu"
+            data-filter=".sandwich"
+            onclick="setActive(this)"
+          >
+            Cakes
+          </li>
+          <li
+            class="link-menu"
+            data-filter=".Cookies"
+            onclick="setActive(this)"
+          >
+            Snacks
+          </li>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Trupti Bakery. All rights reserved.</p>
-            <div class="social-icons">
-                <a class="facebook-link" href="https://www.facebook.com/profile.php?id=100063828828061&mibextid=ZbWKwL" target="_blank">
-                    <i class="fab fa-facebook"></i>
-                </a>
-                <a class="instagram-link" href="https://www.instagram.com/truptibakeryandsnacks?igsh=MTJ4MTZqbDJvcmk2Nw==" target="_blank">
-                    <i class="fab fa-instagram"></i>
-                </a>
-            <a class="call-link" href="tel:6356122122">
-                <i class="fas fa-phone"></i>
-            </a>
+      </div>
+      <div class="shop-flex consts">
+        <div class="shop1 mix sandwich">
+          <div class="shop-image">
+            <img src="assets/images/products/Red-Velvet.png" alt="Roti Sandwich" />
+          </div>
+          <h2>Red Velvet Cake</h2>
+          <div class="d-flex justify-content-between">
+            <article>₹ 300</article>
+            <div
+              class="d-flex mb-3 align-items-center gap-1 justify-content-center"
+            >
+              <div class="stars mb-0 d-flex align-items-center gap-1">
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+              </div>
+              <div style="font-size: 12px">(283)</div>
             </div>
+          </div>
+          <button
+            type="button"
+            class="btn btn-custom w-100"
+            onclick="sendWhatsAppMessage(this)"
+          >
+            <i class="fa-solid fa-cart-shopping"></i>&ensp;Buy Now
+          </button>
         </div>
-    </footer>
-</body>
+        <div class="shop1 mix sandwich">
+          <div class="shop-image">
+            <img src="assets/images/products/Vanilla-cake.png" alt="Roti Sandwich" />
+          </div>
+          <h2>Vanilla Cake</h2>
+          <div class="d-flex justify-content-between">
+            <article>₹ 250</article>
+            <div
+              class="d-flex mb-3 align-items-center gap-1 justify-content-center"
+            >
+              <div class="stars mb-0 d-flex align-items-center gap-1">
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+              </div>
+              <div style="font-size: 12px">(999+)</div>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="btn btn-custom w-100"
+            onclick="sendWhatsAppMessage(this)"
+          >
+            <i class="fa-solid fa-cart-shopping"></i>&ensp;Buy Now
+          </button>
+        </div>
+        <div class="shop1 mix sandwich">
+          <div class="shop-image">
+            <img
+              src="assets/images/products/Barbie-cake.png"
+              alt="Roti Sandwich"
+            />
+          </div>
+          <h2>Barbie cake</h2>
+          <div class="d-flex justify-content-between">
+            <article>₹ 350</article>
+            <div
+              class="d-flex mb-3 align-items-center gap-1 justify-content-center"
+            >
+              <div class="stars mb-0 d-flex align-items-center gap-1">
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+              </div>
+              <div style="font-size: 12px">(452)</div>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="btn btn-custom w-100"
+            onclick="sendWhatsAppMessage(this)"
+          >
+            <i class="fa-solid fa-cart-shopping"></i>&ensp;Buy Now
+          </button>
+        </div>
+
+        <div class="shop1 mix sandwich">
+          <div class="shop-image">
+            <img
+              src="assets/images/products/mango_cake.png"
+              alt="Roti Sandwich"
+            />
+          </div>
+          <h2>Mango Cake</h2>
+          <div class="d-flex justify-content-between">
+            <article>₹ 350</article>
+            <div
+              class="d-flex mb-3 align-items-center gap-1 justify-content-center"
+            >
+              <div class="stars mb-0 d-flex align-items-center gap-1">
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+              </div>
+              <div style="font-size: 12px">(452)</div>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="btn btn-custom w-100"
+            onclick="sendWhatsAppMessage(this)"
+          >
+            <i class="fa-solid fa-cart-shopping"></i>&ensp;Buy Now
+          </button>
+        </div>
+
+        <div class="shop1 mix sandwich">
+          <div class="shop-image">
+            <img src="assets/images/products/chocolate-cake.png" alt="Roti Sandwich" />
+          </div>
+          <h2>Chocolate Cake</h2>
+          <div class="d-flex justify-content-between">
+            <article>₹ 300</article>
+            <div
+              class="d-flex mb-3 align-items-center gap-1 justify-content-center"
+            >
+              <div class="stars mb-0 d-flex align-items-center gap-1">
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+              </div>
+              <div style="font-size: 12px">(283)</div>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="btn btn-custom w-100"
+            onclick="sendWhatsAppMessage(this)"
+          >
+            <i class="fa-solid fa-cart-shopping"></i>&ensp;Buy Now
+          </button>
+        </div>
+
+        <div class="shop1 mix sandwich">
+          <div class="shop-image">
+            <img src="assets/images/products/Blueberry-cake.png" alt="Roti Sandwich" />
+          </div>
+          <h2>Blueberry Cake</h2>
+          <div class="d-flex justify-content-between">
+            <article>₹ 300</article>
+            <div
+              class="d-flex mb-3 align-items-center gap-1 justify-content-center"
+            >
+              <div class="stars mb-0 d-flex align-items-center gap-1">
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+              </div>
+              <div style="font-size: 12px">(283)</div>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="btn btn-custom w-100"
+            onclick="sendWhatsAppMessage(this)"
+          >
+            <i class="fa-solid fa-cart-shopping"></i>&ensp;Buy Now
+          </button>
+        </div>
+
+
+        <div class="shop1 mix sandwich">
+          <div class="shop-image">
+            <img src="assets/images/products/Pastries.png" alt="Roti Sandwich" />
+          </div>
+          <h2>Pastry</h2>
+          <div class="d-flex justify-content-between">
+            <article>Starting at ₹ 75</article>
+            <div
+              class="d-flex mb-3 align-items-center gap-1 justify-content-center"
+            >
+              <div class="stars mb-0 d-flex align-items-center gap-1">
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+              </div>
+              <div style="font-size: 12px">(283)</div>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="btn btn-custom w-100"
+            onclick="sendWhatsAppMessage(this)"
+          >
+            <i class="fa-solid fa-cart-shopping"></i>&ensp;Buy Now
+          </button>
+        </div>
+
+
+        <div class="shop1 mix roti-Donut">
+          <div class="shop-image">
+            <img src="assets/images/products/Oreo_Silk.png" alt="Roti Donut" />
+          </div>
+          <h2>Oreo Silk</h2>
+          <div class="d-flex justify-content-between">
+            <article>₹ 95</article>
+            <div
+              class="d-flex mb-3 align-items-center gap-1 justify-content-center"
+            >
+              <div class="stars mb-0 d-flex align-items-center gap-1">
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+              </div>
+              <div style="font-size: 12px">(352)</div>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="btn btn-custom w-100"
+            onclick="sendWhatsAppMessage(this)"
+          >
+            <i class="fa-solid fa-cart-shopping"></i>&ensp;Buy Now
+          </button>
+        </div>
+
+        <div class="shop1 mix roti-Donut">
+          <div class="shop-image">
+            <img src="assets/images/products/Bubbly_Silk.png" alt="Roti Donut" />
+          </div>
+          <h2>Bubbly_Silk</h2>
+          <div class="d-flex justify-content-between">
+            <article>₹ 95</article>
+            <div
+              class="d-flex mb-3 align-items-center gap-1 justify-content-center"
+            >
+              <div class="stars mb-0 d-flex align-items-center gap-1">
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+              </div>
+              <div style="font-size: 12px">(352)</div>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="btn btn-custom w-100"
+            onclick="sendWhatsAppMessage(this)"
+          >
+            <i class="fa-solid fa-cart-shopping"></i>&ensp;Buy Now
+          </button>
+        </div>
+
+        <div class="shop1 mix roti-Donut">
+          <div class="shop-image">
+            <img src="assets/images/products/HearBlush_Silk.png" alt="Roti Donut" />
+          </div>
+          <h2>Heart Blush Silk</h2>
+          <div class="d-flex justify-content-between">
+            <article>₹ 95</article>
+            <div
+              class="d-flex mb-3 align-items-center gap-1 justify-content-center"
+            >
+              <div class="stars mb-0 d-flex align-items-center gap-1">
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+              </div>
+              <div style="font-size: 12px">(352)</div>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="btn btn-custom w-100"
+            onclick="sendWhatsAppMessage(this)"
+          >
+            <i class="fa-solid fa-cart-shopping"></i>&ensp;Buy Now
+          </button>
+        </div>
+
+        <div class="shop1 mix roti-Donut">
+          <div class="shop-image">
+            <img src="assets/images/products/KitKat.png" alt="Roti Donut" />
+          </div>
+          <h2>KitKat</h2>
+          <div class="d-flex justify-content-between">
+            <article>₹ 50</article>
+            <div
+              class="d-flex mb-3 align-items-center gap-1 justify-content-center"
+            >
+              <div class="stars mb-0 d-flex align-items-center gap-1">
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+              </div>
+              <div style="font-size: 12px">(352)</div>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="btn btn-custom w-100"
+            onclick="sendWhatsAppMessage(this)"
+          >
+            <i class="fa-solid fa-cart-shopping"></i>&ensp;Buy Now
+          </button>
+        </div>
+
+        
+        <div class="shop1 mix roti-Donut">
+          <div class="shop-image">
+            <img src="assets/images/products/FiveStar.png" alt="Roti Donut" />
+          </div>
+          <h2>5 Star</h2>
+          <div class="d-flex justify-content-between">
+            <article>₹ 30</article>
+            <div
+              class="d-flex mb-3 align-items-center gap-1 justify-content-center"
+            >
+              <div class="stars mb-0 d-flex align-items-center gap-1">
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+              </div>
+              <div style="font-size: 12px">(352)</div>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="btn btn-custom w-100"
+            onclick="sendWhatsAppMessage(this)"
+          >
+            <i class="fa-solid fa-cart-shopping"></i>&ensp;Buy Now
+          </button>
+        </div>
+
+        <div class="shop1 mix roti-Donut">
+          <div class="shop-image">
+            <img src="assets/images/products/Ferrero_Rosar.png" alt="Roti Donut" />
+          </div>
+          <h2>Ferrero Rosar</h2>
+          <div class="d-flex justify-content-between">
+            <article>₹ 190</article>
+            <div
+              class="d-flex mb-3 align-items-center gap-1 justify-content-center"
+            >
+              <div class="stars mb-0 d-flex align-items-center gap-1">
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+              </div>
+              <div style="font-size: 12px">(352)</div>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="btn btn-custom w-100"
+            onclick="sendWhatsAppMessage(this)"
+          >
+            <i class="fa-solid fa-cart-shopping"></i>&ensp;Buy Now
+          </button>
+        </div>
+
+        <div class="shop1 mix roti-Donut">
+          <div class="shop-image">
+            <img src="assets/images/products/Snikers.png" alt="Roti Donut" />
+          </div>
+          <h2>Snikers</h2>
+          <div class="d-flex justify-content-between">
+            <article>₹ 50</article>
+            <div
+              class="d-flex mb-3 align-items-center gap-1 justify-content-center"
+            >
+              <div class="stars mb-0 d-flex align-items-center gap-1">
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+              </div>
+              <div style="font-size: 12px">(352)</div>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="btn btn-custom w-100"
+            onclick="sendWhatsAppMessage(this)"
+          >
+            <i class="fa-solid fa-cart-shopping"></i>&ensp;Buy Now
+          </button>
+        </div>
+
+
+
+        <div class="shop1 mix Cookies">
+          <div class="shop-image">
+            <img
+              src="assets/images/products/Punjabi_Samosa.png"
+              alt="Cookies"
+            />
+          </div>
+          <h2>Punjabi Samosa</h2>
+          <div class="d-flex justify-content-between">
+            <article>₹ 15</article>
+            <div
+              class="d-flex mb-3 align-items-center gap-1 justify-content-center"
+            >
+              <div class="stars mb-0 d-flex align-items-center gap-1">
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+              </div>
+              <div style="font-size: 12px">(999+)</div>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="btn btn-custom w-100"
+            onclick="sendWhatsAppMessage(this)"
+          >
+            <i class="fa-solid fa-cart-shopping"></i>&ensp;Buy Now
+          </button>
+        </div>
+
+        <div class="shop1 mix Cookies">
+          <div class="shop-image">
+            <img
+              src="assets/images/products/Puff.png"
+              alt="Cookies"
+            />
+          </div>
+          <h2>Puff</h2>
+          <div class="d-flex justify-content-between">
+            <article>₹ 30</article>
+            <div
+              class="d-flex mb-3 align-items-center gap-1 justify-content-center"
+            >
+              <div class="stars mb-0 d-flex align-items-center gap-1">
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+              </div>
+              <div style="font-size: 12px">(999+)</div>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="btn btn-custom w-100"
+            onclick="sendWhatsAppMessage(this)"
+          >
+            <i class="fa-solid fa-cart-shopping"></i>&ensp;Buy Now
+          </button>
+        </div>
+
+        <div class="shop1 mix Cookies">
+          <div class="shop-image">
+            <img
+              src="assets/images/products/Vegetable_Sandwich.png"
+              alt="Cookies"
+            />
+          </div>
+          <h2>Vegetable Sandwich</h2>
+          <div class="d-flex justify-content-between">
+            <article>₹ 45</article>
+            <div
+              class="d-flex mb-3 align-items-center gap-1 justify-content-center"
+            >
+              <div class="stars mb-0 d-flex align-items-center gap-1">
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+              </div>
+              <div style="font-size: 12px">(999+)</div>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="btn btn-custom w-100"
+            onclick="sendWhatsAppMessage(this)"
+          >
+            <i class="fa-solid fa-cart-shopping"></i>&ensp;Buy Now
+          </button>
+        </div>
+
+        <div class="shop1 mix Cookies">
+          <div class="shop-image">
+            <img
+              src="assets/images/products/ColdDrinks.png"
+              alt="Cookies"
+            />
+          </div>
+          <h2>Cold Drinks</h2>
+          <div class="d-flex justify-content-between">
+            <article>starting at ₹ 20</article>
+            <div
+              class="d-flex mb-3 align-items-center gap-1 justify-content-center"
+            >
+              <div class="stars mb-0 d-flex align-items-center gap-1">
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+              </div>
+              <div style="font-size: 12px">(999+)</div>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="btn btn-custom w-100"
+            onclick="sendWhatsAppMessage(this)"
+          >
+            <i class="fa-solid fa-cart-shopping"></i>&ensp;Buy Now
+          </button>
+        </div>
+
+
+        <div class="shop1 mix Cookies">
+          <div class="shop-image">
+            <img src="assets/images/products/fokacia.png" alt="Cookies" />
+          </div>
+          <h2>Cookies Daun Hijau</h2>
+          <div class="d-flex justify-content-between">
+            <article>Rp 9.000</article>
+            <div
+              class="d-flex mb-3 align-items-center gap-1 justify-content-center"
+            >
+              <div class="stars mb-0 d-flex align-items-center gap-1">
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+                <i class="fas fa-star gold"></i>
+              </div>
+              <div style="font-size: 12px">(87)</div>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="btn btn-custom w-100"
+            onclick="sendWhatsAppMessage(this)"
+          >
+            <i class="fa-solid fa-cart-shopping"></i>&ensp;Buy Now
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="bg-menu" id="menu">
+      <div class="menu-title">
+        <section>Pricelist</section>
+        <h2>General  Bakery  Items</h2>
+        <hr />
+      </div>
+      <div class="menu-flex">
+        <div class="menu1">
+          <div class="small-image">
+            <img src="assets/images/products/samosa.png" alt="" />
+          </div>
+          <div><h4>Samosa</h4></div>
+          <div class="line"></div>
+          <div><h4>Rp 15.000</h4></div>
+        </div>
+        <div class="menu1">
+          <div class="small-image">
+            <img src="assets/images/products/veg-puffs-2.png" alt="" />
+          </div>
+          <div><h4>Veg Puff</h4></div>
+          <div class="line"></div>
+          <div><h4>Rp 14.000</h4></div>
+        </div>
+        <div class="menu1">
+          <div class="small-image">
+            <img src="assets/images/products/Bun.png" alt="" />
+          </div>
+          <div><h4>Bun</h4></div>
+          <div class="line"></div>
+          <div><h4>Rp 14.000</h4></div>
+        </div>
+        <div class="menu1">
+          <div class="small-image">
+            <img src="assets/images/products/loaf-Bread.png" alt="" />
+          </div>
+          <div><h4>Bread</h4></div>
+          <div class="line"></div>
+          <div><h4>Rp 12.000</h4></div>
+        </div>
+        <div class="menu1">
+          <div class="small-image">
+            <img src="assets/images/products/cup-cake.png" alt="" />
+          </div>
+          <div><h4>Cup Cake</h4></div>
+          <div class="line"></div>
+          <div><h4>Rp 13.000</h4></div>
+        </div>
+        <div class="menu1">
+          <div class="small-image">
+            <img src="assets/images/products/vanilla-cupcake.png" alt="" />
+          </div>
+          <div><h4>Vanila Cup Cake</h4></div>
+          <div class="line"></div>
+          <div><h4>Rp 13.000</h4></div>
+        </div>
+        <div class="menu1">
+          <div class="small-image">
+            <img src="assets/images/products/vanilla-pastry.png" alt="" />
+          </div>
+          <div><h4>Vanila Pastry</h4></div>
+          <div class="line"></div>
+          <div><h4>Rp 12.000</h4></div>
+        </div>
+        <div class="menu1">
+          <div class="small-image">
+            <img src="assets/images/products/peanut-chocolate-pastry.png" alt="" />
+          </div>
+          <div><h4>Peanut Choco Pastry</h4></div>
+          <div class="line"></div>
+          <div><h4>Rp 12.000</h4></div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-gallery" id="galery">
+      <div class="gallery-flex">
+        <div class="image-one event">
+          <img src="assets/images/others/gallery-1.jpg" alt="" />
+          <div class="overlay"></div>
+        </div>
+        <div class="inside-gallery">
+          <div class="left">
+            <div class="event">
+              <img src="assets/images/others/gallery-2.jpg" alt="" />
+              <div class="overlay"></div>
+            </div>
+            <div class="event">
+              <img src="assets/images/others/gallery-3.jpg" alt="" />
+              <div class="overlay"></div>
+            </div>
+          </div>
+          <div class="right">
+            <div class="event">
+              <img src="assets/images/others/gallery-4.jpg" alt="" />
+              <div class="overlay"></div>
+            </div>
+            <div class="event">
+              <img src="assets/images/others/gallery-5.jpg" alt="" />
+              <div class="overlay"></div>
+            </div>
+          </div>
+        </div>
+        <div class="last-image event">
+          <img src="assets/images/others/gallery-6.jpg" alt="" />
+          <div class="overlay"></div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-about" id="services">
+      <div class="about-flex">
+        <div class="about1">
+          <div>
+            <img
+              src="assets/images/others/left-footer-image.jpg"
+              alt="footer-image-2"
+            />
+          </div>
+          <div class="about1-txt">
+            <h3 style="letter-spacing: 2px">Order From</h3>
+            <div class="txt-inside">
+              <section>Through WhatsApp</section>
+              <section>6356122122</section>
+            </div>
+            <div class="txt-inside">
+              <section>Through Outlet</section>
+              <section class="text-end">
+                9, Akruti Shopping Center, Satellite, Ahmedabad
+              </section>
+            </div>
+          </div>
+        </div>
+        <div class="about1">
+          <div>
+            <img
+              src="assets/images/others/right-footer-image.jpg"
+              alt="footer-image-2"
+            />
+          </div>
+          <div class="about1-txt">
+            <h3 style="letter-spacing: 2px">Jam Operasional</h3>
+            <div class="txt-inside">
+              <section>Every Day</section>
+              <section>09.00 - 21.00 WIB</section>
+            </div>
+            <div class="txt-inside">
+              <section>Week Ends</section>
+              <section>13.00 - 21.00 WIB</section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq" id="faq" style="max-width: 90%; margin: 0 auto">
+      <h2 class="faq-title">Frequently Asked Questions</h2>
+      <div
+        class="accordion"
+        style="
+          --bs-accordion-bg: #edf2f7;
+          --bs-accordion-color: #000;
+          --bs-accordion-border-color: #c7a17a;
+          --bs-accordion-btn-color: #edf2f7;
+          --bs-accordion-active-bg: #c7a17a;
+          --bs-accordion-btn-focus-box-shadow: none;
+        "
+        id="faq"
+      >
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseOne"
+              aria-expanded="true"
+              aria-controls="collapseOne"
+            >
+            What types of bread are available in this store?
+            </button>
+          </h2>
+          <div
+            id="collapseOne"
+            class="accordion-collapse collapse show"
+            data-bs-parent="#faq"
+          >
+            <div class="accordion-body">
+              We serve a wide selection of breads, ranging from classic breads that
+              soft to unique bread creations with a variety of flavors and
+              texture.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseTwo"
+              aria-expanded="false"
+              aria-controls="collapseTwo"
+            >
+            Can I order bread online?
+            </button>
+          </h2>
+          <div
+            id="collapseTwo"
+            class="accordion-collapse collapse"
+            data-bs-parent="#faq"
+          >
+            <div class="accordion-body">
+              <strong>Yes,</strong> We provide online booking service.
+              You can place an order through our website or through
+              delivery apps that we work with.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseThree"
+              aria-expanded="false"
+              aria-controls="collapseThree"
+            >
+            How long does bread last after purchase?
+            </button>
+          </h2>
+          <div
+            id="collapseThree"
+            class="accordion-collapse collapse"
+            data-bs-parent="#faq"
+          >
+            <div class="accordion-body">
+              White bread and sweet bread can generally last up to 2-3 days if stored in a cool place. Unpreservative-free bread should be consumed immediately for the best quality.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseFive"
+              aria-expanded="false"
+              aria-controls="collapseFive"
+            >
+            What if I want to file a complaint or suggestion?
+            </button>
+          </h2>
+          <div
+            id="collapseFive"
+            class="accordion-collapse collapse"
+            data-bs-parent="#faq"
+          >
+            <div class="accordion-body">
+              We're always open to hearing your feedback! Please contact
+              us by email at truptibakery1979@gmail.com or by number
+              phone/WhatsApp us at 6356122122.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseSix"
+              aria-expanded="false"
+              aria-controls="collapseSix"
+            >
+            Are there any discounts for bulk purchases?
+            </button>
+          </h2>
+          <div
+            id="collapseSix"
+            class="accordion-collapse collapse"
+            data-bs-parent="#faq"
+          >
+            <div class="accordion-body">
+              <strong>Yes, </strong> We provide special discounts for
+              bulk purchases, such as orders for events or
+              catering. Please contact us for more information.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseSeven"
+              aria-expanded="false"
+              aria-controls="collapseSeven"
+            >
+            Where are the locations of these bakery outlets?
+            </button>
+          </h2>
+          <div
+            id="collapseSeven"
+            class="accordion-collapse collapse"
+            data-bs-parent="#faq"
+          >
+            <div class="accordion-body">
+              You can order directly at our store by visiting
+              one of our four outlets located in:
+              <ul class="list-unstyled mt-3">
+                <li>
+                  <strong>Satellite, Ahmedabad:</strong> 9, Akruti Shopping Center, Opposite Karnavati Apartment, Jodhpur Gam Road
+                <li>
+                  <strong>Tubewell Rd, Ahmedabad:</strong> 7 Angan Complex, Sarkari Tubewell Rd, Ahmedabad, Gujarat 380058
+                </li>
+                <li>
+                  <strong>Shilaj, Ahmedabad:</strong> 2, Ground Floor, Aashray Arise, OPP Vasantbag Party Plot, Canal Road- 380059
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseEight"
+              aria-expanded="false"
+              aria-controls="collapseEight"
+            >
+            What time are bakeries open?
+            </button>
+          </h2>
+          <div
+            id="collapseEight"
+            class="accordion-collapse collapse"
+            data-bs-parent="#faq"
+          >
+            <div class="accordion-body">
+              Our bakery is open daily from 09.00 to 21.00
+              Pm gmt. For Fridays, it is open from 13.00 to 21.00 WIB. But
+              Opening hours are subject to change on public holidays.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer pb-3" id="about">
+      <div class="footer-flex">
+        <div class="footer-brand">
+          <div>
+            <h3
+              style="
+                font-family: 'Pushster', cursive;
+                font-weight: 700;
+                letter-spacing: 2px;
+              "
+            >
+              <i class="fa-solid fa-burger" style="color: #c7a17a"></i
+              >&nbsp;Trupti Bakery
+            </h3>
+          </div>
+          <section style="line-height: 1.45rem; margin-top: 10px">
+            A place where the aroma of fresh bread fills the air and brings a typical warm taste every day. We serve a wide selection of breads, from classic soft breads to unique bread creations with a variety of flavors and textures.
+          </section>
+        </div>
+
+        <div class="flex-space-between" style="flex-wrap: wrap">
+          <div class="social-media">
+            <section>
+              <h3>Social Media</h3>
+              <span
+                ><a href="https://www.facebook.com/profile.php/?id=100063828828061"
+                  ><i class="fab fa-facebook-square"></i>&ensp;Facebook</a
+                ></span
+              >
+              <span
+                ><a href="https://www.instagram.com/truptibakeryandsnacks"
+                  ><i class="fab fa-instagram"></i>&ensp;Instagram</a
+                ></span
+              >
+            </section>
+          </div>
+
+          <div class="contact">
+            <section>
+              <h3>Kontak Kami</h3>
+              <span
+                ><a href="https://wa.me/6356122122"
+                  ><i class="fab fa-whatsapp"></i>&ensp;6356122122</a
+                ></span
+              >
+              <span>
+                <a href="mailto:truptibakery1979@gmail.com"
+                  ><i class="fa-regular fa-envelope"></i
+                  >&ensp;truptibakery1979@gmail.com</a
+                ></span
+              >
+            </section>
+          </div>
+
+          <div class="legalitas">
+            <section>
+              <h3>Legality</h3>
+              <span
+                ><a href="javascript:void(0)"
+                  ><i class="fa-solid fa-file-signature"></i>&ensp;Terms & Conditions</a
+                ></span
+              >
+              <span
+                ><a href="javascript:void(0)"
+                  ><i class="fa-solid fa-user-shield"></i>&ensp;Privacy Policy</a
+                ></span
+              >
+            </section>
+          </div>
+
+          <div class="outlet">
+            <section>
+              <h3>Outlet Location</h3>
+              <span
+                ><i class="fas fa-map-marker-alt"></i>&ensp;9, Akruti Shopping Center, Opposite Karnavati Apartment, Jodhpur Gam Road, Satellite, Ahmedabad</span
+              >
+              <span
+                ><i class="fas fa-map-marker-alt"></i>&ensp;7 Angan Complex, Sarkari Tubewell Rd, Ahmedabad, Gujarat 380058</span
+              >
+              <span
+                ><i class="fas fa-map-marker-alt"></i>&ensp;2, Ground Floor, Aashray Arise, OPP Vasantbag Party Plot, Canal Road, Shilaj, Ahmedabad- 380059</span
+              >
+            </section>
+          </div>
+        </div>
+      </div>
+      <div
+        class="text-center copyright"
+        style="color: #edf2f7; margin-top: 4rem"
+      >
+        <p style="font-size: small">Copyright 2024, All Right Reserved</p>
+      </div>
+    </div>
+    <script src="assets/js/mixitup.min.js"></script>
+    <script>
+      var mixer = mixitup(".consts");
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+      function setActive(element) {
+        const links = document.querySelectorAll(".link-menu");
+        links.forEach((link) => link.classList.remove("active"));
+        element.classList.add("active");
+      }
+
+      function getGreeting() {
+        const hour = new Date().getHours();
+        if (hour >= 4 && hour < 12) {
+          return "Good Morning";
+        } else if (hour >= 12 && hour < 15) {
+          return "Good Afternoon";
+        } else if (hour >= 15 && hour < 18) {
+          return "Good Evening";
+        } else {
+          return "";
+        }
+      }
+
+      function sendWhatsAppMessage(button) {
+        const productName = button
+          .closest(".shop1")
+          .querySelector("h2").innerText;
+        const greeting = getGreeting();
+        const message = `Hello ${greeting}, I want to buy a ${productName}.`;
+        const phoneNumber = "6356122122";
+        const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+          message
+        )}`;
+        window.open(whatsappURL, "_blank");
+      }
+
+      function scrollToSection(event, sectionId, element) {
+        event.preventDefault();
+
+        const links = document.querySelectorAll("a");
+        links.forEach((link) => link.classList.remove("active"));
+
+        const activeLink = document.getElementById(element);
+        if (activeLink) {
+          activeLink.classList.add("active");
+        }
+
+        const targetElement = document.getElementById(sectionId);
+        const offset = -80;
+        const elementPosition =
+          targetElement.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition + offset;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      }
+    </script>
+  </body>
 </html>
