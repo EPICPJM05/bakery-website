@@ -3,249 +3,1079 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trupti Bakery</title>
+    <title>SmartPresence - AI-Driven Face Recognition & CCTV Attendance Platform</title>
+    
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome for Icons -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <!-- Animate on Scroll (AOS) -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Leaflet Map CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Custom CSS -->
     <style>
-        /* Navbar Styling */
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --dark-gradient: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            --success-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            --warning-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+            --accent-color: #4facfe;
+            --dark-color: #2c3e50;
+            --light-color: #f8fafc;
+            --success-color: #11998e;
+            --info-color: #4facfe;
+            --warning-color: #f093fb;
+            --danger-color: #f5576c;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --border-light: #e2e8f0;
+            --shadow-light: rgba(0, 0, 0, 0.05);
+            --shadow-medium: rgba(0, 0, 0, 0.1);
+            --shadow-dark: rgba(0, 0, 0, 0.15);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
         .navbar {
-            background-color: #1A1A40; /* Deep Navy Blue */
+            transition: all 0.4s ease;
+            padding: 20px 0;
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         }
-
-        .navbar .nav-link {
-            color: #FFFFFF; /* White */
-            transition: color 0.3s ease;
+        
+        .navbar.scrolled {
+            padding: 15px 0;
+            background: rgba(255, 255, 255, 0.98) !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
-
-        .navbar .nav-link:hover {
-            color: #FFD700; /* Gold */
+        
+        .navbar-brand {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-
-        /* Hero Section Styling */
-        .hero {
+        
+        .nav-link {
+            font-weight: 500;
+            color: var(--text-dark) !important;
+            transition: all 0.3s ease;
             position: relative;
-            background: linear-gradient(135deg, #FF7F50, #FFDAB9), url('https://www.publicdomainpictures.net/pictures/30000/velka/cake-1571354445Vzt.jpg') no-repeat center center;
-            background-size: cover;
-            color: #FFFFFF; /* White Text */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin: 0 10px;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gradient);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            padding: 200px 0 120px;
+            position: relative;
+            overflow: hidden;
             min-height: 100vh;
-            animation: fadeIn 1.5s ease-in-out;
+            display: flex;
+            align-items: center;
         }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
         }
-
-        .hero .btn {
-            background-color: #FFD700; /* Gold */
-            color: #1A1A40; /* Deep Navy Blue */
+        
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(180deg, transparent 0%, rgba(248, 250, 252, 0.1) 100%);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin-bottom: 3rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .btn-gradient {
+            background: var(--accent-gradient);
             border: none;
-            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+            padding: 15px 35px;
+            font-weight: 600;
+            border-radius: 50px;
+            color: white;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            box-shadow: 0 8px 25px rgba(79, 172, 254, 0.3);
         }
-
-        .hero .btn:hover {
-            background-color: #1A1A40; /* Deep Navy Blue */
-            color: #FFFFFF; /* White */
-            transform: scale(1.1);
+        
+        .btn-gradient:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(79, 172, 254, 0.4);
+            color: white;
         }
-
-        /* Cards Hover Effect */
-        .card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        
+        .btn-outline-gradient {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            padding: 13px 35px;
+            font-weight: 600;
+            border-radius: 50px;
+            color: white;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
         }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        
+        .btn-outline-gradient:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: white;
+            color: white;
+            transform: translateY(-3px);
         }
-
-        /* Scroll to Top Button */
-        #scrollToTopBtn {
-            position: fixed;
+        
+        .camera-feed-container {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+            transform: perspective(1000px) rotateY(-15deg) rotateX(5deg);
+            transition: transform 0.6s ease;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .camera-feed-container:hover {
+            transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+        }
+        
+        .camera-feed {
+            position: relative;
+            width: 100%;
+            height: 450px;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .camera-feed::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(79, 172, 254, 0.1) 0%, transparent 70%);
+        }
+        
+        .face-detection-overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .detection-box {
+            position: absolute;
+            border: 3px solid rgba(79, 172, 254, 0.9);
+            background-color: rgba(79, 172, 254, 0.15);
+            border-radius: 12px;
+            animation: pulse 2s infinite;
+            backdrop-filter: blur(2px);
+        }
+        
+        .detection-box::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            background: linear-gradient(45deg, transparent, rgba(79, 172, 254, 0.3), transparent);
+            border-radius: 16px;
+            animation: rotate 4s linear infinite;
+        }
+        
+        .detection-box:nth-child(1) {
+            width: 130px;
+            height: 170px;
+            top: 20%;
+            left: 25%;
+        }
+        
+        .detection-box:nth-child(2) {
+            width: 110px;
+            height: 150px;
+            top: 50%;
+            left: 60%;
+        }
+        
+        .detection-box:nth-child(3) {
+            width: 90px;
+            height: 120px;
+            top: 30%;
+            left: 70%;
+        }
+        
+        .camera-status {
+            position: absolute;
             bottom: 20px;
-            right: 20px;
+            left: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .status-indicator.active {
+            background-color: var(--success-color);
+            box-shadow: 0 0 10px var(--success-color);
+        }
+        
+        .section-bg {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+        
+        .section-bg-alt {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        }
+        
+        .feature-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px var(--shadow-light);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-gradient);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px var(--shadow-medium);
+        }
+        
+        .feature-icon {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .proof-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border-radius: 20px;
+            box-shadow: 0 8px 25px var(--shadow-light);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .proof-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--success-gradient);
+        }
+        
+        .progress {
+            height: 12px;
+            border-radius: 6px;
+            background: rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            border-radius: 6px;
+            transition: width 1s ease;
+        }
+        
+        .progress-bar.bg-success {
+            background: var(--success-gradient) !important;
+        }
+        
+        .progress-bar.bg-primary {
+            background: var(--primary-gradient) !important;
+        }
+        
+        .progress-bar.bg-info {
+            background: var(--accent-gradient) !important;
+        }
+        
+        .testimonial-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px var(--shadow-medium);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            font-size: 80px;
+            color: rgba(102, 126, 234, 0.1);
+            font-family: serif;
+            line-height: 1;
+        }
+        
+        .testimonial-avatar {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            border-radius: 50%;
+            background: var(--primary-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .case-study-card, .blog-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px var(--shadow-light);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            height: 100%;
+        }
+        
+        .case-study-card:hover, .blog-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px var(--shadow-medium);
+        }
+        
+        .placeholder-image {
+            height: 220px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .placeholder-image.bg-primary {
+            background: var(--primary-gradient);
+        }
+        
+        .placeholder-image.bg-success {
+            background: var(--success-gradient);
+        }
+        
+        .placeholder-image.bg-warning {
+            background: var(--warning-gradient);
+        }
+        
+        .placeholder-image.bg-info {
+            background: var(--accent-gradient);
+        }
+        
+        .placeholder-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        .partner-logo, .trust-seal {
+            padding: 30px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px var(--shadow-light);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            height: 100%;
+        }
+        
+        .partner-logo:hover, .trust-seal:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px var(--shadow-medium);
+        }
+        
+        .trust-seal .fas {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+        }
+        
+        footer {
+            background: linear-gradient(135deg, #232526 0%, #667eea 40%, #764ba2 80%, #f093fb 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.10);
+            backdrop-filter: blur(12px);
+            z-index: 0;
+        }
+        
+        footer > .container, footer .row, footer .newsletter-signup, footer .social-links, footer .col-lg-4, footer .col-md-6 {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .social-links a {
+            transition: all 0.3s ease;
+            padding: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary-gradient);
+            color: white !important;
+            transform: translateY(-5px);
+        }
+        
+        .newsletter-signup .form-control {
+            border-radius: 50px 0 0 50px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 15px 25px;
+        }
+        
+        .newsletter-signup .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .newsletter-signup .btn {
+            border-radius: 0 50px 50px 0;
+            background: var(--accent-gradient);
+            border: none;
+            padding: 15px 30px;
+            font-weight: 600;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
             display: none;
+            background: var(--primary-gradient);
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
             z-index: 1000;
-            transition: transform 0.3s ease;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
         }
-
-        #scrollToTopBtn:hover {
-            transform: scale(1.2);
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
         }
-
-        /* Smooth Scrolling */
-        html {
-            scroll-behavior: smooth;
+        
+        .badge {
+            font-weight: 600;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        .badge.bg-success {
+            background: var(--success-gradient) !important;
+        }
+        
+        .badge.bg-primary {
+            background: var(--primary-gradient) !important;
+        }
+        
+        .badge.bg-info {
+            background: var(--accent-gradient) !important;
+        }
+        
+        .badge.bg-warning {
+            background: var(--warning-gradient) !important;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes ping {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) perspective(1000px) rotateY(-15deg) rotateX(5deg); }
+            50% { transform: translateY(-20px) perspective(1000px) rotateY(-15deg) rotateX(5deg); }
+        }
+        
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+        
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Enhanced Scroll Animations */
+        .stagger-animation {
+            transition-delay: 0.1s;
+        }
+        
+        .stagger-animation:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+        
+        .stagger-animation:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+        
+        .stagger-animation:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+        
+        .stagger-animation:nth-child(5) {
+            transition-delay: 0.5s;
+        }
+        
+        .stagger-animation:nth-child(6) {
+            transition-delay: 0.6s;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .camera-feed-container {
+                transform: none;
+                margin-top: 2rem;
+            }
+            
+            .camera-feed {
+                height: 300px;
+            }
+            
+            .btn-gradient, .btn-outline-gradient {
+                padding: 12px 25px;
+                font-size: 0.8rem;
+            }
+            
+            .feature-card {
+                margin-bottom: 2rem;
+            }
         }
     </style>
 </head>
-<body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="100">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="Assets/Logo.jpg" alt="Logo" class="rounded-circle" width="50">
-                Trupti Bakery
+            <a class="navbar-brand fw-bold text-primary d-flex align-items-center gap-2" href="#">
+                <img src="assets/logo.png" alt="SmartPresence Logo" style="height:48px;width:auto;display:inline-block;vertical-align:middle;">
+                <span>SmartPresence</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#offers">Special Offers</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#proof">Proof</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#case-studies">Case Studies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#partners">Partners</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#blog">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-gradient ms-2" href="#demo">Request Demo</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero d-flex align-items-center justify-content-center">
-        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 99, 71, 0.6);"></div>
-        <div class="container text-center position-relative">
-            <h1 class="display-4 fw-bold" data-aos="fade-down">Welcome to Trupti Bakery</h1>
-            <p class="lead" data-aos="fade-up">Freshly baked goods made with love every day!</p>
-            <a href="#menu" class="btn btn-lg mt-4" data-aos="zoom-in">Explore Our Menu</a>
-        </div>
-    </section>
-
-    <!-- About Us Section -->
-    <section id="about" class="py-5 bg-light">
-        <div class="container text-center" data-aos="fade-up">
-            <h2 class="fw-bold">About Us</h2>
-            <p class="mt-3">At Trupti Bakery, we craft artisan breads, pastries, and cakes using the finest ingredients. Our mission is to bring joy to your taste buds with every bite.</p>
-        </div>
-    </section>
-
-    <!-- Menu Section -->
-    <section id="menu" class="py-5">
+    <section id="home" class="hero-section">
         <div class="container">
-            <h2 class="text-center fw-bold mb-5" data-aos="fade-up">Our Menu</h2>
-            <div id="menuCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
-                <div class="carousel-inner">
-                    <!-- Cake -->
-                    <div class="carousel-item active" data-aos="flip-left">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="card shadow border-0">
-                                    <img src="Assets/cake.jpg" class="card-img-top" alt="Cake">
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title">Custom Cakes</h5>
-                                        <p class="card-text">Starting at ₹400</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Pastry -->
-                            <div class="col-md-4">
-                                <div class="card shadow border-0">
-                                    <img src="Assets/pastry.jpg" class="card-img-top" alt="Pastry">
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title">Pastry</h5>
-                                        <p class="card-text">Starting at ₹85</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Bread -->
-                            <div class="col-md-4">
-                                <div class="card shadow border-0">
-                                    <img src="Assets/bread.jpg" class="card-img-top" alt="Bread">
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title">Artisan Bread</h5>
-                                        <p class="card-text">₹35</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <h1 class="hero-title text-white animate-on-scroll">
+                        SmartPresence – 93% accurate AI attendance & access control
+                    </h1>
+                    <div class="mb-3">
+                        <span class="badge bg-success fs-6" style="background:linear-gradient(90deg,#ff9933,#fff,#138808);color:#222;border-radius:8px;padding:8px 18px;font-weight:600;box-shadow:0 2px 8px rgba(19,136,8,0.08);">100% Made in India</span>
                     </div>
-                    <!-- Add More Items Below -->
-                    <div class="carousel-item" data-aos="flip-left">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="card shadow border-0">
-                                    <img src="Assets/soft-drinks.jpg" class="card-img-top" alt="Cake">
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title">Chocolate Cake</h5>
-                                        <p class="card-text">₹500</p>
-                                    </div>
-                                </div>
+                    <p class="hero-subtitle animate-on-scroll stagger-animation">
+                        Transform your security and attendance management with AI-powered facial recognition. 
+                        Real-time processing, anti-spoofing protection, and seamless CCTV integration.
+                    </p>
+                    <div class="d-flex gap-3 flex-wrap animate-on-scroll stagger-animation">
+                        <a href="#demo" class="btn btn-gradient">Request Demo</a>
+                        <a href="#features" class="btn btn-outline-gradient">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 animate-on-scroll floating" style="transition-delay: 0.6s;">
+                    <div class="camera-feed-container">
+                        <div class="camera-feed">
+                            <div class="face-detection-overlay">
+                                <div class="detection-box"></div>
+                                <div class="detection-box"></div>
+                                <div class="detection-box"></div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="card shadow border-0">
-                                    <img src="Assets/vanilla-cupcake.jpg" class="card-img-top" alt="Pastry">
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title">Fruit Pastry</h5>
-                                        <p class="card-text">₹100</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card shadow border-0">
-                                    <img src="Assets/white-buns.jpg" class="card-img-top" alt="Bread">
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title">Whole Wheat Bread</h5>
-                                        <p class="card-text">₹40</p>
-                                    </div>
-                                </div>
+                            <div class="camera-status">
+                                <span class="status-indicator active"></span>
+                                Live Detection Active
                             </div>
                         </div>
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#menuCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#menuCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
             </div>
         </div>
     </section>
 
-    <!-- Special Offers Section -->
-    <section id="offers" class="py-5 bg-light">
-        <div class="container text-center" data-aos="fade-up">
-            <h2 class="fw-bold mb-4">Special Offers</h2>
+    <!-- Features Section -->
+    <section id="features" class="py-5 section-bg">
+        <div class="container py-5">
+            <div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="display-5 fw-bold mb-3 animate-on-scroll">Platform Features</h2>
+                    <p class="lead text-muted animate-on-scroll" style="transition-delay: 0.2s;">Comprehensive AI-driven attendance and management system</p>
+                </div>
+            </div>
             <div class="row g-4">
-                <div class="col-md-4" data-aos="zoom-in">
-                    <div class="card shadow border-0">
-                        <img src="Assets/offer1.jpg" class="card-img-top" alt="Offer 1">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Buy One Get One Free!</h5>
-                            <p class="card-text">On selected pastries. Limited Time Offer.</p>
+                <!-- Face Recognition and Detection -->
+                <div class="col-md-6 col-lg-4 animate-on-scroll">
+                    <div class="feature-card text-center p-4 h-100">
+                        <div class="feature-icon mb-3"><i class="fas fa-user-check fa-3x"></i></div>
+                        <h4>Face Recognition & Detection</h4>
+                        <ul class="text-muted text-start small ps-3 mb-0">
+                            <li>Face detection using advanced models (YOLO, dlib)</li>
+                            <li>Face embeddings & comparison for recognition</li>
+                            <li>Augmentation for improved accuracy</li>
+                            <li>Supports multiple known faces per person</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Attendance Management -->
+                <div class="col-md-6 col-lg-4 animate-on-scroll" style="transition-delay: 0.1s;">
+                    <div class="feature-card text-center p-4 h-100">
+                        <div class="feature-icon mb-3"><i class="fas fa-calendar-check fa-3x"></i></div>
+                        <h4>Attendance Management</h4>
+                        <ul class="text-muted text-start small ps-3 mb-0">
+                            <li>Mark attendance via recognized faces</li>
+                            <li>Store data in attendance database</li>
+                            <li>View attendance lists & reports</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Web Interface -->
+                <div class="col-md-6 col-lg-4 animate-on-scroll" style="transition-delay: 0.2s;">
+                    <div class="feature-card text-center p-4 h-100">
+                        <div class="feature-icon mb-3"><i class="fas fa-desktop fa-3x"></i></div>
+                        <h4>Web Interface</h4>
+                        <ul class="text-muted text-start small ps-3 mb-0">
+                            <li>User authentication & authorization</li>
+                            <li>Admin management dashboard</li>
+                            <li>Manage classes, classrooms, sections, students</li>
+                            <li>Face detection web interface</li>
+                            <li>Communication & notifications</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- File Uploads and Media Handling -->
+                <div class="col-md-6 col-lg-4 animate-on-scroll" style="transition-delay: 0.3s;">
+                    <div class="feature-card text-center p-4 h-100">
+                        <div class="feature-icon mb-3"><i class="fas fa-upload fa-3x"></i></div>
+                        <h4>File Uploads & Media</h4>
+                        <ul class="text-muted text-start small ps-3 mb-0">
+                            <li>Upload images & videos for processing</li>
+                            <li>Store uploads & results securely</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Utilities and Configuration -->
+                <div class="col-md-6 col-lg-4 animate-on-scroll" style="transition-delay: 0.4s;">
+                    <div class="feature-card text-center p-4 h-100">
+                        <div class="feature-icon mb-3"><i class="fas fa-cogs fa-3x"></i></div>
+                        <h4>Utilities & Configuration</h4>
+                        <ul class="text-muted text-start small ps-3 mb-0">
+                            <li>Utility scripts for helper functions</li>
+                            <li>Configurable detection & model settings</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Real-time Monitoring and Alerts -->
+                <div class="col-md-6 col-lg-4 animate-on-scroll" style="transition-delay: 0.5s;">
+                    <div class="feature-card text-center p-4 h-100">
+                        <div class="feature-icon mb-3"><i class="fas fa-bell fa-3x"></i></div>
+                        <h4>Real-time Monitoring & Alerts</h4>
+                        <ul class="text-muted text-start small ps-3 mb-0">
+                            <li>Live face recognition & attendance via CCTV feeds</li>
+                            <li>Instant alerts for unauthorized/unknown individuals</li>
+                            <li>Enhances security & compliance for government, schools, public institutions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proof Section -->
+    <section id="proof" class="py-5 section-bg-alt">
+        <div class="container py-5">
+            <div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="display-5 fw-bold mb-3 animate-on-scroll">Proven Results</h2>
+                    <p class="lead text-muted animate-on-scroll" style="transition-delay: 0.2s;">Real-world performance metrics and client success stories</p>
+                </div>
+            </div>
+            
+            <!-- Accuracy Benchmarks -->
+            <div class="row mb-5">
+                <div class="col-lg-6 animate-on-scroll">
+                    <div class="proof-card p-4 h-100">
+                        <h3 class="fw-bold mb-4">Accuracy Benchmarks</h3>
+                        <div class="benchmark-item mb-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span>LFW Dataset Accuracy</span>
+                                <span class="badge bg-success fs-6">>93%</span>
+                            </div>
+                            <div class="progress mt-2">
+                                <div class="progress-bar bg-success" style="width: 99%"></div>
+                            </div>
+                        </div>
+                        <div class="benchmark-item mb-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span>Anti-Spoofing Detection</span>
+                                <span class="badge bg-primary fs-6">98.5%</span>
+                            </div>
+                            <div class="progress mt-2">
+                                <div class="progress-bar bg-primary" style="width: 98.5%"></div>
+                            </div>
+                        </div>
+                        <div class="benchmark-item mb-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span>Processing Speed</span>
+                                <span class="badge bg-info fs-6">< 200ms</span>
+                            </div>
+                            <div class="progress mt-2">
+                                <div class="progress-bar bg-info" style="width: 95%"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4" data-aos="zoom-in">
-                    <div class="card shadow border-0">
-                        <img src="Assets/offer2.jpg" class="card-img-top" alt="Offer 2">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Discount on Cakes</h5>
-                            <p class="card-text">10% off on custom cakes.</p>
+                <div class="col-lg-6 animate-on-scroll" style="transition-delay: 0.2s;">
+                    <div class="proof-card p-4 h-100">
+                        <h3 class="fw-bold mb-4">Client Metrics</h3>
+                        <div class="row text-center">
+                            <div class="col-6 mb-3">
+                                <div class="metric-item">
+                                    <h2 class="text-primary fw-bold">100+</h2>
+                                    <p class="text-muted">Schools Deployed</p>
+                                </div>
+                            </div>
+                            <div class="col-6 mb-3">
+                                <div class="metric-item">
+                                    <h2 class="text-primary fw-bold">50K+</h2>
+                                    <p class="text-muted">Active Users</p>
+                                </div>
+                            </div>
+                            <div class="col-6 mb-3">
+                                <div class="metric-item">
+                                    <h2 class="text-primary fw-bold">99.2%</h2>
+                                    <p class="text-muted">Uptime</p>
+                                </div>
+                            </div>
+                            <div class="col-6 mb-3">
+                                <div class="metric-item">
+                                    <h2 class="text-primary fw-bold">24/7</h2>
+                                    <p class="text-muted">Support</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4" data-aos="zoom-in">
-                    <div class="card shadow border-0">
-                        <img src="Assets/offer3.jpg" class="card-img-top" alt="Offer 3">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Free Delivery</h5>
-                            <p class="card-text">On orders above ₹1000</p>
+            </div>
+
+            <!-- Testimonial -->
+            <div class="row">
+                <div class="col-lg-8 mx-auto animate-on-scroll" style="transition-delay: 0.4s;">
+                    <div class="testimonial-card text-center p-5">
+                        <div class="testimonial-avatar mb-4">
+                            <i class="fas fa-user-circle fa-4x text-primary"></i>
+                        </div>
+                        <blockquote class="blockquote">
+                            <p class="mb-4 fs-5">
+                                "SmartPresence has revolutionized our attendance management. The accuracy is incredible, 
+                                and the integration with our existing CCTV system was seamless. We've seen a 40% reduction 
+                                in administrative overhead."
+                            </p>
+                            <footer class="blockquote-footer">
+                                <strong>Sarah Johnson</strong>, HR Manager at <cite>TechCorp Solutions</cite>
+                            </footer>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proof Gallery -->
+            <div class="row mt-5 justify-content-center animate-on-scroll">
+                <div class="col-md-5 mb-4">
+                    <div class="card shadow-lg border-0 h-100 proof-card-gallery">
+                        <img src="proof/Proof_1.png" class="img-fluid rounded proof-img" alt="Proof 1" style="object-fit:cover; height:400px; width:100%; display:block; margin:auto;">
+                    </div>
+                </div>
+                <div class="col-md-5 mb-4">
+                    <div class="card shadow-lg border-0 h-100 proof-card-gallery">
+                        <img src="proof/Proof_2.jpeg" class="img-fluid rounded proof-img" alt="Proof 2" style="object-fit:cover; height:400px; width:100%; display:block; margin:auto;">
+                    </div>
+                </div>
+                <div class="col-md-5 mb-4">
+                    <div class="card shadow-lg border-0 h-100 proof-card-gallery">
+                        <img src="proof/Proof_3.png" class="img-fluid rounded proof-img" alt="Proof 3" style="object-fit:cover; height:400px; width:100%; display:block; margin:auto;">
+                    </div>
+                </div>
+                <div class="col-md-5 mb-4">
+                    <div class="card shadow-lg border-0 h-100 proof-card-gallery">
+                        <img src="proof/Proof_5.png" class="img-fluid rounded proof-img" alt="Proof 5" style="object-fit:cover; height:400px; width:100%; display:block; margin:auto;">
+                    </div>
+                </div>
+                <div class="col-md-5 mb-4">
+                    <div class="card shadow-lg border-0 h-100 proof-card-gallery">
+                        <img src="proof/Proof_6.png" class="img-fluid rounded proof-img" alt="Proof 6" style="object-fit:cover; height:400px; width:100%; display:block; margin:auto;">
+                    </div>
+                </div>
+                <div class="col-md-5 mb-4 d-flex justify-content-center">
+                    <div class="card shadow-lg border-0 h-100 proof-card-gallery" style="max-width: 320px; margin:auto;">
+                        <video controls class="w-100 rounded proof-img" style="height:440px; width:100%; max-width:320px; object-fit:cover; background:#000; display:block; margin:auto;">
+                            <source src="proof/Proof_4.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section id="case-studies" class="py-5 section-bg">
+        <div class="container py-5">
+            <div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="display-5 fw-bold mb-3 animate-on-scroll">Case Studies</h2>
+                    <p class="lead text-muted animate-on-scroll" style="transition-delay: 0.2s;">Real implementations delivering measurable results</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 animate-on-scroll">
+                    <div class="case-study-card">
+                        <div class="case-study-image">
+                            <div class="placeholder-image bg-primary d-flex align-items-center justify-content-center">
+                                <i class="fas fa-school fa-3x text-white"></i>
+                            </div>
+                        </div>
+                        <div class="case-study-content p-4">
+                            <h4>University Campus Security</h4>
+                            <p class="text-muted">Large university deployed SmartPresence across 15 buildings, 
+                            reducing unauthorized access by 85% and automating attendance for 25,000 students.</p>
+                            <div class="case-study-stats">
+                                <span class="badge bg-success me-2">85% Reduction</span>
+                                <span class="badge bg-info">25K Students</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 animate-on-scroll" style="transition-delay: 0.2s;">
+                    <div class="case-study-card">
+                        <div class="case-study-image">
+                            <div class="placeholder-image bg-success d-flex align-items-center justify-content-center">
+                                <i class="fas fa-building fa-3x text-white"></i>
+                            </div>
+                        </div>
+                        <div class="case-study-content p-4">
+                            <h4>Corporate Office Complex</h4>
+                            <p class="text-muted">Multi-tenant office building implemented SmartPresence for 
+                            access control, achieving 99.5% accuracy and reducing security incidents by 60%.</p>
+                            <div class="case-study-stats">
+                                <span class="badge bg-success me-2">99.5% Accuracy</span>
+                                <span class="badge bg-info">60% Reduction</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 animate-on-scroll" style="transition-delay: 0.4s;">
+                    <div class="case-study-card">
+                        <div class="case-study-image">
+                            <div class="placeholder-image bg-warning d-flex align-items-center justify-content-center">
+                                <i class="fas fa-industry fa-3x text-white"></i>
+                            </div>
+                        </div>
+                        <div class="case-study-content p-4">
+                            <h4>Manufacturing Facility</h4>
+                            <p class="text-muted">Industrial facility integrated SmartPresence with existing 
+                            CCTV for employee tracking, improving safety compliance by 90%.</p>
+                            <div class="case-study-stats">
+                                <span class="badge bg-success me-2">90% Compliance</span>
+                                <span class="badge bg-info">24/7 Monitoring</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -253,65 +1083,409 @@
         </div>
     </section>
 
-    <!-- Location Section -->
-    <section class="py-5">
-        <div class="container text-center" data-aos="fade-up">
-            <h2 class="fw-bold mb-4">Our Shop Location</h2>
-            <div id="map" style="height: 400px;"></div>
+    <!-- Partners Section -->
+    <section id="partners" class="py-5 section-bg-alt">
+        <div class="container py-5">
+            <div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="display-5 fw-bold mb-3 animate-on-scroll">Partner Integrations</h2>
+                    <p class="lead text-muted animate-on-scroll" style="transition-delay: 0.2s;">Compatible with leading CCTV vendors and VMS systems</p>
+                </div>
+            </div>
+            <div class="row g-4 align-items-center justify-content-center">
+                <div class="col-md-3 col-6 text-center animate-on-scroll">
+                    <div class="partner-logo">
+                        <i class="fas fa-video fa-3x text-muted"></i>
+                        <p class="mt-2 fw-semibold">Hikvision</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 text-center animate-on-scroll" style="transition-delay: 0.1s;">
+                    <div class="partner-logo">
+                        <i class="fas fa-camera fa-3x text-muted"></i>
+                        <p class="mt-2 fw-semibold">Dahua</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 text-center animate-on-scroll" style="transition-delay: 0.2s;">
+                    <div class="partner-logo">
+                        <i class="fas fa-shield-alt fa-3x text-muted"></i>
+                        <p class="mt-2 fw-semibold">Milestone</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 text-center animate-on-scroll" style="transition-delay: 0.3s;">
+                    <div class="partner-logo">
+                        <i class="fas fa-eye fa-3x text-muted"></i>
+                        <p class="mt-2 fw-semibold">Genetec</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-5 bg-light">
-        <div class="container text-center" data-aos="fade-up">
-            <h2 class="fw-bold">Contact Us</h2>
-            <p class="mt-3">123 Bakery Line, Satellite, Ahmedabad</p>
-            <p>Phone: +91 999-999-9999</p>
-            <p>Email: info@truptibakery.com</p>
+    <!-- Trust Seals Section -->
+    <section class="py-5 section-bg">
+        <div class="container py-5">
+            <div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="display-5 fw-bold mb-3 animate-on-scroll">Trust & Compliance</h2>
+                    <p class="lead text-muted animate-on-scroll" style="transition-delay: 0.2s;">Enterprise-grade security and privacy compliance</p>
+                </div>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-3 col-6 text-center animate-on-scroll">
+                    <div class="trust-seal">
+                        <i class="fas fa-certificate fa-3x text-primary mb-3"></i>
+                        <h5>ISO 27001</h5>
+                        <p class="text-muted small">Information Security</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 text-center animate-on-scroll" style="transition-delay: 0.1s;">
+                    <div class="trust-seal">
+                        <i class="fas fa-lock fa-3x text-primary mb-3"></i>
+                        <h5>GDPR Compliant</h5>
+                        <p class="text-muted small">Data Protection</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 text-center animate-on-scroll" style="transition-delay: 0.2s;">
+                    <div class="trust-seal">
+                        <i class="fas fa-shield-alt fa-3x text-primary mb-3"></i>
+                        <h5>SOC 2 Type II</h5>
+                        <p class="text-muted small">Security Controls</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 text-center animate-on-scroll" style="transition-delay: 0.3s;">
+                    <div class="trust-seal">
+                        <i class="fas fa-user-shield fa-3x text-primary mb-3"></i>
+                        <h5>Privacy First</h5>
+                        <p class="text-muted small">Biometric Privacy</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Scroll to Top Button -->
-    <button id="scrollToTopBtn" class="btn btn-primary rounded-circle">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+    <!-- Blog Section -->
+    <section id="blog" class="py-5 section-bg-alt">
+        <div class="container py-5">
+            <div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="display-5 fw-bold mb-3 animate-on-scroll">Latest Updates</h2>
+                    <p class="lead text-muted animate-on-scroll" style="transition-delay: 0.2s;">Stay informed about our latest features and industry insights</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 animate-on-scroll">
+                    <div class="blog-card">
+                        <div class="blog-image">
+                            <div class="placeholder-image bg-info d-flex align-items-center justify-content-center">
+                                <i class="fas fa-mask fa-3x text-white"></i>
+                            </div>
+                        </div>
+                        <div class="blog-content p-4">
+                            <span class="badge bg-primary mb-2">New Feature</span>
+                            <h5>SmartPresence rolls out facial recognition with anti-mask compliance</h5>
+                            <p class="text-muted">Enhanced detection algorithms now support mask-wearing scenarios while maintaining high accuracy...</p>
+                            <a href="#" class="text-primary text-decoration-none">Read More →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 animate-on-scroll" style="transition-delay: 0.2s;">
+                    <div class="blog-card">
+                        <div class="blog-image">
+                            <div class="placeholder-image bg-success d-flex align-items-center justify-content-center">
+                                <i class="fas fa-chart-line fa-3x text-white"></i>
+                            </div>
+                        </div>
+                        <div class="blog-content p-4">
+                            <span class="badge bg-success mb-2">Analytics</span>
+                            <h5>Advanced analytics dashboard now available</h5>
+                            <p class="text-muted">New dashboard provides deeper insights into attendance patterns, security events, and system performance...</p>
+                            <a href="#" class="text-primary text-decoration-none">Read More →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 animate-on-scroll" style="transition-delay: 0.4s;">
+                    <div class="blog-card">
+                        <div class="blog-image">
+                            <div class="placeholder-image bg-warning d-flex align-items-center justify-content-center">
+                                <i class="fas fa-mobile-alt fa-3x text-white"></i>
+                            </div>
+                        </div>
+                        <div class="blog-content p-4">
+                            <span class="badge bg-warning mb-2">Mobile App</span>
+                            <h5>Mobile app update with offline capabilities</h5>
+                            <p class="text-muted">Latest mobile app update includes offline attendance tracking and enhanced security features...</p>
+                            <a href="#" class="text-primary text-decoration-none">Read More →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo CTA Section -->
+    <section id="demo" class="py-5 cta-section text-white">
+        <div class="container py-5">
+            <div class="row text-center">
+                <div class="col-lg-8 mx-auto animate-on-scroll">
+                    <h2 class="display-5 fw-bold mb-4">Ready to Transform Your Security?</h2>
+                    <p class="lead mb-4">See SmartPresence in action with a personalized demo tailored to your needs</p>
+                    <div class="d-flex gap-3 justify-content-center flex-wrap">
+                        <a href="#" class="btn btn-gradient btn-lg">Request Demo</a>
+                        <a href="#" class="btn btn-outline-gradient btn-lg">Contact Sales</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Creators Section -->
+    <section class="py-5 section-bg-alt" id="creators">
+        <div class="container py-4">
+            <div class="row justify-content-center align-items-center text-center">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="fw-bold mb-3">Meet the Creators</h2>
+                    <div class="mb-3">
+                        <span class="badge bg-success fs-6" style="background:linear-gradient(90deg,#ff9933,#fff,#138808);color:#222;border-radius:8px;padding:8px 18px;font-weight:600;box-shadow:0 2px 8px rgba(19,136,8,0.08);">100% Made in India</span>
+                    </div>
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col-md-5 mb-4 mb-md-0 d-flex flex-column align-items-center">
+                            <div class="creator-photo mb-3" style="width:110px;height:140px;background:#e5e7eb;border-radius:12px;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 2px 12px rgba(36,54,120,0.10);">
+                                <img src="team/namra.jpeg" alt="Namra Parikh" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
+                            </div>
+                            <h5 class="mb-1">Namra Parikh</h5>
+                            <p class="text-muted mb-0">Student, Nirma University</p>
+                            <p class="text-muted mb-0">E-mail - namraparikh710@gmail.com</p>
+                        </div>
+                        <div class="col-md-5 d-flex flex-column align-items-center">
+                            <div class="creator-photo mb-3" style="width:110px;height:140px;background:#e5e7eb;border-radius:12px;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 2px 12px rgba(36,54,120,0.10);">
+                                <img src="team/Parshv.jpeg" alt="Parshv Mehta" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
+                            </div>
+                            <h5 class="mb-1">Parshv Mehta</h5>
+                            <p class="text-muted mb-0">Student, New LJ</p>
+                            <p class="text-muted mb-0">E-mail - parshvmehta7000@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="bg-dark text-light py-3">
-        <div class="container text-center">
-            <p class="mb-0">&copy; 2025 Trupti Bakery. All rights reserved.</p>
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5 class="fw-bold mb-3">
+                        <img src="assets/logo.png" alt="SmartPresence Logo" style="height:48px;width:auto;display:inline-block;vertical-align:middle;">
+                        <span>SmartPresence</span>
+                    </h5>
+                    <p class="text-muted">AI-driven face recognition and CCTV attendance platform for modern enterprises.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3"><i class="fab fa-linkedin fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-youtube fa-lg"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <h6 class="fw-bold mb-3">Product</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted text-decoration-none">Features</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Pricing</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Integrations</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">API</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h6 class="fw-bold mb-3">Company</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted text-decoration-none">About</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Careers</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Blog</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h6 class="fw-bold mb-3">Support</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted text-decoration-none">Help Center</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Documentation</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Status</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h6 class="fw-bold mb-3">Legal</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted text-decoration-none">Privacy</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Terms</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Security</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Compliance</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="text-muted mb-0">&copy; 2024 SmartPresence. All rights reserved.<br>
+                    <span class="fw-bold">Made by Namra Parikh (Nirma University) &amp; Parshv Mehta (New LJ)</span><br>
+                    <span class="badge bg-success fs-6" style="background:linear-gradient(90deg,#ff9933,#fff,#138808);color:#222;border-radius:8px;padding:8px 18px;font-weight:600;box-shadow:0 2px 8px rgba(19,136,8,0.08);">100% Made in India</span></p>
+                </div>
+                <div class="col-md-6">
+                    <div class="newsletter-signup">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Subscribe to our newsletter">
+                            <button class="btn btn-primary" type="button">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <a href="#" class="btn btn-primary btn-lg back-to-top" title="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Leaflet Map JS -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <!-- AOS JS -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Custom JS -->
     <script>
-        AOS.init(); // Initialize AOS animations
-
-        // Initialize Leaflet Map
-        const map = L.map('map').setView([23.022185, 72.525732], 15);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-        L.marker([23.022185, 72.525732]).addTo(map)
-            .bindPopup('<b>Our Shop</b><br>We are here!')
-            .openPopup();
-
-        // Scroll to Top Button
-        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
-        window.onscroll = function () {
-            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-                scrollToTopBtn.style.display = "block";
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
             } else {
-                scrollToTopBtn.style.display = "none";
+                navbar.classList.remove('scrolled');
             }
-        };
-        scrollToTopBtn.onclick = function () {
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
-        };
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Animation on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.classList.add('animated');
+                }
+            });
+        }
+
+        // Initialize animations on load
+        window.addEventListener('load', animateOnScroll);
+        // Check for new elements on scroll
+        window.addEventListener('scroll', animateOnScroll);
+
+        // Back to top button
+        const backToTopButton = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+
+        backToTopButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Simulate camera feed detection boxes
+        function animateDetectionBoxes() {
+            const boxes = document.querySelectorAll('.detection-box');
+            
+            boxes.forEach((box, index) => {
+                // Randomize initial positions slightly
+                const randomX = Math.random() * 20 - 10;
+                const randomY = Math.random() * 20 - 10;
+                box.style.transform = `translate(${randomX}px, ${randomY}px)`;
+                
+                // Animate with different delays
+                box.style.animationDelay = `${index * 0.5}s`;
+            });
+        }
+
+        // Initialize camera animation
+        animateDetectionBoxes();
+
+        // Form submission handling (example)
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Here you would typically send the form data to your server
+                // For demo purposes, we'll just show an alert
+                alert('Thank you for your request! We will contact you shortly.');
+                form.reset();
+            });
+        });
+
+        // Tooltip initialization
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+
+        // Random face detection animation (simulating live detection)
+        function simulateLiveDetection() {
+            const cameraFeed = document.querySelector('.camera-feed');
+            const detectionBoxes = document.querySelectorAll('.detection-box');
+            
+            setInterval(() => {
+                // Randomly move detection boxes slightly
+                detectionBoxes.forEach(box => {
+                    const randomX = Math.random() * 20 - 10;
+                    const randomY = Math.random() * 20 - 10;
+                    box.style.transform = `translate(${randomX}px, ${randomY}px)`;
+                    
+                    // Randomly change opacity to simulate detection confidence
+                    const randomOpacity = 0.7 + Math.random() * 0.3;
+                    box.style.opacity = randomOpacity;
+                });
+                
+                // Occasionally add a new detection box
+                if (Math.random() > 0.9 && detectionBoxes.length < 5) {
+                    const newBox = document.createElement('div');
+                    newBox.className = 'detection-box';
+                    newBox.style.width = `${80 + Math.random() * 60}px`;
+                    newBox.style.height = `${100 + Math.random() * 80}px`;
+                    newBox.style.left = `${10 + Math.random() * 80}%`;
+                    newBox.style.top = `${10 + Math.random() * 80}%`;
+                    document.querySelector('.face-detection-overlay').appendChild(newBox);
+                }
+            }, 1000);
+        }
+
+        // Start the simulation
+        simulateLiveDetection();
     </script>
 </body>
 </html>
