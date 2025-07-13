@@ -1,339 +1,590 @@
-/* Custom Styles */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    scroll-behavior: smooth; /* Smooth scrolling */
+/* Global Styles */
+:root {
+    --primary-color: #2563eb;
+    --primary-dark: #1d4ed8;
+    --secondary-color: #64748b;
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --danger-color: #ef4444;
+    --light-gray: #f8fafc;
+    --dark-gray: #1e293b;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
 }
 
-.hero {
-    background: linear-gradient(135deg, #ff7e5f, #feb47b);
-    height: 100vh;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: var(--dark-gray);
+}
+
+/* Navigation */
+.navbar {
+    transition: all 0.3s ease;
+    padding: 1rem 0;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    color: var(--primary-color) !important;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: var(--dark-gray) !important;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--primary-color) !important;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.3;
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Camera Feed Animation */
+.camera-feed-container {
+    position: relative;
+    perspective: 1000px;
+}
+
+.camera-feed {
+    background: linear-gradient(45deg, #1e293b, #334155);
+    border-radius: 20px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transform: rotateY(-5deg) rotateX(5deg);
+    transition: transform 0.3s ease;
+}
+
+.camera-feed:hover {
+    transform: rotateY(0deg) rotateX(0deg);
+}
+
+.face-detection-overlay {
+    position: relative;
+    height: 300px;
+    background: linear-gradient(45deg, #475569, #64748b);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.detection-box {
+    position: absolute;
+    border: 2px solid #10b981;
+    border-radius: 8px;
+    animation: pulse 2s infinite;
+}
+
+.detection-box:nth-child(1) {
+    top: 20%;
+    left: 20%;
+    width: 80px;
+    height: 100px;
+    animation-delay: 0s;
+}
+
+.detection-box:nth-child(2) {
+    top: 40%;
+    right: 25%;
+    width: 70px;
+    height: 90px;
+    animation-delay: 0.5s;
+}
+
+.detection-box:nth-child(3) {
+    bottom: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 80px;
+    animation-delay: 1s;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.7;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+}
+
+.camera-status {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background: rgba(16, 185, 129, 0.9);
     color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.status-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #10b981;
+    animation: blink 1.5s infinite;
+}
+
+.status-indicator.active {
+    background: #10b981;
+}
+
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0.3;
+    }
+}
+
+/* Feature Cards */
+.feature-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.feature-icon {
+    color: var(--primary-color);
+}
+
+/* Proof Section */
+.proof-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--border-color);
+}
+
+.benchmark-item {
+    margin-bottom: 1.5rem;
+}
+
+.progress {
+    height: 8px;
+    border-radius: 4px;
+    background-color: #e2e8f0;
+}
+
+.progress-bar {
+    border-radius: 4px;
+    transition: width 1s ease;
+}
+
+.metric-item h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Testimonial */
+.testimonial-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+}
+
+.testimonial-avatar {
+    color: var(--primary-color);
+}
+
+/* Case Studies */
+.case-study-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.case-study-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.case-study-image {
+    height: 200px;
+    overflow: hidden;
+}
+
+.placeholder-image {
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    animation: fadeIn 2s ease-in-out; /* Fade-in animation */
 }
 
-.hero h1 {
-    font-size: 4rem;
-    font-weight: bold;
-    animation: fadeInDown 1.5s ease-out;
+.case-study-content h4 {
+    color: var(--dark-gray);
+    margin-bottom: 1rem;
 }
 
-.hero p {
-    font-size: 1.5rem;
-    animation: fadeInUp 1.5s ease-out;
+.case-study-stats {
+    margin-top: 1rem;
 }
 
-.hero .btn {
-    font-size: 1.2rem;
-    padding: 10px 30px;
-    border-radius: 30px;
-    border: 2px solid #fff;
-    animation: zoomIn 1s ease-out;
+/* Partners */
+.partner-logo {
+    padding: 2rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
 }
 
-.hero .btn:hover {
-    background-color: #ff7e5f;
-    border-color: #ff7e5f;
+.partner-logo:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
 
-/* Keyframe animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+/* Trust Seals */
+.trust-seal {
+    padding: 2rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
 }
 
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.trust-seal:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* Blog Cards */
+.blog-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
 }
 
-@keyframes zoomIn {
-    from {
-        transform: scale(0.8);
-    }
-    to {
-        transform: scale(1);
-    }
+.blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
 
-/* Carousel Images */
-#menu .carousel-item {
-    text-align: center;
+.blog-image {
+    height: 200px;
+    overflow: hidden;
 }
 
-#menu .carousel-item img {
-    width: 100%;
-    height: auto;
-    max-width: 300px;
-    margin: 0 auto;
-    display: block;
-    transition: transform 0.3s ease, filter 0.3s ease; /* Smooth transition */
+.blog-content h5 {
+    color: var(--dark-gray);
+    margin-bottom: 1rem;
 }
 
-#menu .carousel-item img:hover {
-    transform: scale(1.1); /* Slight zoom effect */
-    filter: brightness(1.2); /* Increase brightness on hover */
+/* Buttons */
+.btn {
+    border-radius: 8px;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    transition: all 0.3s ease;
 }
 
-/* Offers Cards */
-#offers .card img {
-    width: 100%;
-    height: auto;
-    max-width: 200px;
-    margin: 0 auto;
-    display: block;
-    transition: transform 0.3s ease, filter 0.3s ease;
+.btn-primary {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
 }
 
-#offers .card img:hover {
-    transform: scale(1.05);
-    filter: brightness(1.1);
+.btn-primary:hover {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+    transform: translateY(-2px);
 }
 
-/* Scroll-to-top Button */
-#scrollToTopBtn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    display: none;
-    background-color: red;
-    color: white;
-    border: none;
-    font-size: 20px;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 50%;
-    transition: background-color 0.3s ease;
+.btn-outline-light:hover {
+    transform: translateY(-2px);
 }
 
-#scrollToTopBtn:hover {
-    background-color: #d43f00; /* Darker red on hover */
-}
-
-/* Cards */
-.card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
-}
-
-.card-body {
-    transition: background-color 0.3s ease;
-}
-
-.card-body:hover {
-    background-color: #f8f9fa;
-}
-
-/* Navbar */
-.navbar {
-    background-color: #0056b3; /* Darker blue */
-    z-index: 9999;
-    transition: background-color 0.3s ease;
-}
-
-.navbar .navbar-brand {
-    color: #fff !important; /* Ensure brand logo text is visible */
-}
-
-.navbar .navbar-nav .nav-link {
-    color: #fff !important; /* Make sure links are white */
-    font-weight: bold; /* Add boldness to text */
-}
-
-.navbar .navbar-nav .nav-link:hover {
-    color: #ff7e5f !important; /* Add a pop of color on hover */
-    background-color: rgba(255, 99, 71, 0.2); /* Light background on hover */
-}
-
-.navbar-toggler-icon {
-    background-color: #fff; /* Make hamburger menu icon white */
-}
-
-.navbar:hover {
-    background-color: #004085; /* Darker blue when hovering over navbar */
-}
-
-.navbar .navbar-nav .nav-link.active {
-    color: #ff7e5f !important; /* Highlight active link with the same color as hover */
-    background-color: rgba(255, 99, 71, 0.2); /* Light background for active link */
-}
-
-/* Adjust the brand image for better alignment */
-.navbar-brand img {
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-/* Footer */
+/* --- Enhanced Footer Styles --- */
 footer {
-    background-color: #343a40;
+    background: linear-gradient(135deg, #232526 0%, #667eea 60%, #764ba2 100%);
+    color: #f4f8fb;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 -2px 24px 0 rgba(102,126,234,0.15);
+    animation: footerFadeIn 1.2s cubic-bezier(.4,0,.2,1);
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+    opacity: 0.7;
+    border-radius: 0 0 8px 8px;
+    z-index: 2;
+}
+
+footer .fw-bold, footer h5, footer h6 {
     color: #fff;
-    transition: background-color 0.3s ease;
+    text-shadow: 0 2px 8px rgba(36, 54, 120, 0.12);
 }
 
-footer:hover {
-    background-color: #222; /* Darker footer on hover */
+footer a, footer .text-muted {
+    color: #e0e7ef !important;
+    transition: color 0.3s, text-shadow 0.3s;
 }
 
-/* Menu Section Image Styling */
-.card-img-top {
-    width: 100%;
-    height: 200px; /* Adjust this value to set the height you prefer */
-    object-fit: cover;
-    transition: transform 0.3s ease, filter 0.3s ease;
+footer a:hover, footer .text-muted:hover {
+    color: #fff !important;
+    text-shadow: 0 0 8px #4facfe, 0 0 16px #764ba2;
 }
 
-.card-img-top:hover {
-    transform: scale(1.1);
-    filter: brightness(1.2); /* Add a hover effect to brighten and zoom */
+.social-links a {
+    background: linear-gradient(135deg, #232526 0%, #667eea 60%, #764ba2 100%);
+    color: #e0e7ef !important;
+    box-shadow: 0 2px 12px rgba(102,126,234,0.12);
+    border: 1.5px solid rgba(255,255,255,0.08);
+    transition: all 0.3s cubic-bezier(.4,0,.2,1), box-shadow 0.3s;
+    filter: blur(0);
 }
 
-/* Ensure the cards have consistent height */
-.card {
-    height: 100%;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+.social-links a:hover {
+    color: #fff !important;
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    box-shadow: 0 0 16px #4facfe, 0 0 32px #764ba2;
+    transform: scale(1.12) translateY(-4px);
+    filter: blur(0);
 }
 
-/* Scroll Animation for Elements */
-[data-aos] {
-    opacity: 0;
-    transition: opacity 1s ease-out;
+.newsletter-signup {
+    background: rgba(255,255,255,0.08);
+    border-radius: 32px;
+    box-shadow: 0 2px 16px 0 rgba(102,126,234,0.10);
+    backdrop-filter: blur(8px);
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
 }
 
-[data-aos].aos-animate {
-    opacity: 1;
+.newsletter-signup .form-control {
+    background: transparent;
+    color: #fff;
+    border: none;
+    font-size: 1.1rem;
+    box-shadow: none;
+}
+
+.newsletter-signup .form-control::placeholder {
+    color: #e0e7ef;
+    opacity: 0.8;
+}
+
+.newsletter-signup .btn {
+    background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    border-radius: 0 32px 32px 0;
+    box-shadow: 0 2px 12px rgba(79,172,254,0.18);
+    transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+    padding: 0.75rem 2.2rem;
+    font-size: 1.1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.newsletter-signup .btn:hover {
+    background: linear-gradient(90deg, #764ba2 0%, #4facfe 100%);
+    box-shadow: 0 0 16px #4facfe, 0 0 32px #764ba2;
+    transform: scale(1.05);
+}
+
+@keyframes footerFadeIn {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive tweaks for footer */
+@media (max-width: 768px) {
+    footer .newsletter-signup {
+        flex-direction: column;
+        padding: 1rem;
+    }
+    .newsletter-signup .form-control, .newsletter-signup .btn {
+        border-radius: 32px !important;
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+    .newsletter-signup .btn {
+        margin-bottom: 0;
+    }
 }
 
 /* Responsive Design */
-
-/* Small devices (phones, 600px and below) */
-@media only screen and (max-width: 600px) {
-    .hero h1 {
+@media (max-width: 768px) {
+    .hero-section {
+        text-align: center;
+    }
+    
+    .camera-feed {
+        transform: none;
+        margin-top: 2rem;
+    }
+    
+    .display-4 {
         font-size: 2.5rem;
     }
-
-    .hero p {
-        font-size: 1rem;
+    
+    .display-5 {
+        font-size: 2rem;
     }
-
-    .hero .btn {
-        font-size: 1rem;
-        padding: 8px 20px;
+    
+    .metric-item h2 {
+        font-size: 2rem;
     }
-
-    .navbar .navbar-nav .nav-link {
-        font-size: 1rem;
+    
+    .camera-feed {
+        padding: 1rem;
     }
-
-    #menu .carousel-item img {
-        max-width: 100%;
-    }
-
-    .card-img-top {
-        height: 150px;
-    }
-
-    footer {
-        text-align: center;
-    }
-
-    #scrollToTopBtn {
-        right: 15px;
-        bottom: 15px;
-    }
-}
-
-/* Medium devices (tablets, 768px and below) */
-@media only screen and (max-width: 768px) {
-    .hero h1 {
-        font-size: 3rem;
-    }
-
-    .hero p {
-        font-size: 1.2rem;
-    }
-
-    .hero .btn {
-        font-size: 1.1rem;
-        padding: 10px 25px;
-    }
-
-    .navbar .navbar-nav .nav-link {
-        font-size: 1.1rem;
-    }
-
-    #menu .carousel-item img {
-        max-width: 100%;
-    }
-
-    .card-img-top {
-        height: 180px;
-    }
-
-    footer {
-        text-align: center;
-    }
-
-    #scrollToTopBtn {
-        right: 20px;
-        bottom: 20px;
-    }
-}
-
-/* Large devices (laptops, 1024px and below) */
-@media only screen and (max-width: 1024px) {
-    .hero h1 {
-        font-size: 3.5rem;
-    }
-
-    .hero p {
-        font-size: 1.3rem;
-    }
-
-    .hero .btn {
-        font-size: 1.2rem;
-        padding: 12px 35px;
-    }
-
-    .navbar .navbar-nav .nav-link {
-        font-size: 1.2rem;
-    }
-
-    .card-img-top {
+    
+    .face-detection-overlay {
         height: 200px;
     }
+}
 
-    #menu .carousel-item img {
-        max-width: 90%;
+@media (max-width: 576px) {
+    .hero-section .btn {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    
+    .display-4 {
+        font-size: 2rem;
+    }
+    
+    .display-5 {
+        font-size: 1.75rem;
+    }
+    
+    .camera-feed {
+        padding: 0.5rem;
+    }
+    
+    .face-detection-overlay {
+        height: 150px;
     }
 }
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Loading Animation */
+.loading {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+}
+
+/* Focus States */
+.btn:focus,
+.form-control:focus {
+    box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.25);
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .navbar,
+    .btn,
+    .camera-feed,
+    .social-links {
+        display: none !important;
+    }
+    
+    body {
+        color: black !important;
+        background: white !important;
+    }
+} 
